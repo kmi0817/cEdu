@@ -103,13 +103,13 @@ const main_menu = {
                     id: "register/specialists", value: "전문가 등록"
                 },
                 {
-                    id: "apply/intellectual-asset", value: "지식자산 평가 신청"
+                    id: "intellectual-asset/apply", value: "지식자산 평가 신청"
                 },
                 {
                     id: "evaluation-results", value: "평가결과 공개"
                 },
                 {
-                    id: "select/intellctual-asset", value: "지식자산 선별"
+                    id: "intellectual-asset/select", value: "지식자산 선별"
                 }
             ]
         },
@@ -136,12 +136,14 @@ const main_menu = {
             ]
         },
         {
-            id: "NFT", value: "NFT 생성"
+            id: "nft", value: "NFT 생성"
         }
     ],
     on: {
         onMenuItemClick: (id) => {
-            webix.message(id);
+            if (id != "peer-feedback" && id != "idea") {
+                location.href="/" + id;
+            }
         }
     }
 }
