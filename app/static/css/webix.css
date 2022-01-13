@@ -4775,7 +4775,7 @@
     /* mine */
     font-weight: bold;
     line-height: 3;
-    margin: 0 13px;
+    /* margin: 0 13px; */
   }
   .webix_menu-x .webix_list_item .webix_submenu_icon:before {
     content: '\F001';
