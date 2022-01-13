@@ -3,7 +3,7 @@ const logo = {
     image: "../static/cEdu_logo.png",
     width: 200,
     css: "webix_transparent",
-    click: () => { location.hef="/"; }
+    click: () => { location.href="/"; }
 }
 
 const before_login_top_toolbar = {
@@ -26,7 +26,7 @@ const before_login_top_toolbar = {
                         css: "webix_transparent",
                         width: 100,
                         click: () => {
-                            webix.message("회원가입");
+                            $$("signup_popup").show();
                         }
                     },
                     {
@@ -55,7 +55,7 @@ const after_login_top_toolbar = {
                         css: "webix_transparent",
                         width: 100,
                         click: () => {
-                            webix.ajax().del("/loginout")
+                            webix.ajax().del("/process/loginout")
                             .then((res) => {
                                 var response = res.text();
                                 if (response == "logout successful") {
@@ -67,14 +67,6 @@ const after_login_top_toolbar = {
                                     });
                                 }
                             });
-                        }
-                    },
-                    {
-                        view: "button", value: "회원가입",
-                        css: "webix_transparent",
-                        width: 100,
-                        click: () => {
-                            webix.message("회원가입");
                         }
                     },
                     {
