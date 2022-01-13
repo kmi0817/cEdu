@@ -10,22 +10,8 @@ def index() :
         login = False
     return render_template('index.html', login=login)
 
-@app.route('/loginout', methods=['POST', 'DELETE'])
-def loginout() :
-    if request.method == 'POST' :
-        values = request.get_json(force=True)
-        id = values['id']
-        password = values['password']
 
-        if id == 'asd@asd.com' and password == 'asd' :
-            session['login'] = id
-            return 'login successful'
-        else :
-            return 'login failed'
 
-    elif request.method == 'DELETE' :
-        session.clear()
-        return 'logout successful'
 
 # 지식 거래 장터 소개
 @app.route('/hello')
@@ -92,3 +78,28 @@ def seller() :
 @app.route('/buyer')
 def buyer() :
     return 'buyer'
+
+
+# process 관련 (로그인, 로그아웃, 회원가입 등)
+@app.route('/process/<action>', methods=['POST', 'DELETE'])
+def loginout(action) :
+    if action == 'loginout' :
+        if request.method == 'POST' :
+            values = request.get_json(force=True)
+            id = values['id']
+            password = values['password']
+
+            if id == 'asd@asd.com' and password == 'asd' :
+                session['login'] = id
+                return 'login successful'
+            else :
+                return 'login failed'
+
+        elif request.method == 'DELETE' :
+            session.clear()
+            return 'logout successful'
+
+    elif action == 'signup' :
+        values = request.get_json(force=True)
+        print(values)
+        return 'signup temp OK'
