@@ -8,71 +8,12 @@
     <link rel="stylesheet" href="../static/css/webix.css" type="text/css">
     <!-- <link rel="stylesheet" href="http://cdn.webix.com/edge/webix.css" type="text/css"> -->
     <script src="../static/webix_ui/header.js" type="text/javascript"></script>
+    <script src="../static/webix_ui/form_popup.js" type="text/javascript"></script>
 </head>
 
 <body>
     <script>
         webix.ready(() => {
-            webix.ui({
-                id: "login_popup",
-                view: "window",
-                modal: true,
-                move: true,
-                position: "center",
-                head: "로그인",
-                body: {
-                    view: "form", id: "login_form",
-                    elements: [
-                        {
-                            view: "text",
-                            label: "아이디",
-                            name: "id",
-                            invalidMessage: "아이디를 입력하세요."
-                        },
-                        {
-                            view: "text",
-                            type: "password",
-                            label: "비밀번호",
-                            name: "password",
-                            invalidMessage: "비밀번호를 입력하세요."
-                        },
-                        {
-                            cols: [
-                                {
-                                    view: "button", value: "확인", css: "webix_primary",
-                                    click: () => {
-                                        var form = $$("login_form");
-                                        if (form.validate()) {
-                                            var values = form.getValues();
-                                            webix.ajax().post("/loginout", JSON.stringify(values))
-                                            .then((res) => {
-                                                var response = res.text();
-                                                if (response == "login successful") {
-                                                    $$("login_popup").hide();
-                                                    location.href="/";
-                                                } else {
-                                                    webix.message({type: "error", text: "일치하는 회원 정보가 없습니다."});
-                                                }
-                                            })
-                                        }
-                                    }
-                                },
-                                {
-                                    view: "button", value: "취소", click: () => {
-                                        var login_popup = $$("login_popup");
-                                        login_popup.hide();
-                                    }
-                                }
-                            ]
-                        }
-                    ],
-                    rules: {
-                        "id": webix.rules.isNotEmpty,
-                        "password": webix.rules.isNotEmpty
-                    }
-                }
-            });
-
             webix.ui({
                 view: "scrollview",
                 scroll: "auto",
@@ -85,7 +26,8 @@
                             before_login_header,
                             {% endif %}
                             {
-                                view: "spacer", height: 60
+                                view: "spacer",
+                                height: 100
                             },
                             {
                                 height: 200, cols: [
@@ -103,7 +45,7 @@
                                         view: "button", value: "판매자",
                                         width: 250,
                                         click: () => {
-                                            location.href = "/seller";
+                                            location.href="/seller";
                                         }
                                     },
                                     {
@@ -113,7 +55,7 @@
                                         view: "button", value: "구매자",
                                         width: 250,
                                         click: () => {
-                                            location.href = "/buyer";
+                                            location.href="/buyer";
                                         }
                                     },
                                     {
@@ -123,7 +65,7 @@
                                         view: "button", value: "경매",
                                         width: 250,
                                         click: () => {
-                                            webix.message("경매");
+                                            location.href="/auction";
                                         }
                                     }
                                 ]
