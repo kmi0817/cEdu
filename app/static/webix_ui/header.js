@@ -2,7 +2,8 @@ const logo = {
     view: "button", type: "image",
     image: "../static/cEdu_logo.png",
     width: 200,
-    css: "webix_transparent"
+    css: "webix_transparent",
+    click: () => { location.hef="/"; }
 }
 
 const before_login_top_toolbar = {
@@ -14,6 +15,7 @@ const before_login_top_toolbar = {
                 cols: [
                     {
                         view: "button", value: "로그인",
+                        css: "webix_transparent",
                         width: 100,
                         click: () => {
                             $$("login_popup").show();
@@ -21,6 +23,7 @@ const before_login_top_toolbar = {
                     },
                     {
                         view: "button", value: "회원가입",
+                        css: "webix_transparent",
                         width: 100,
                         click: () => {
                             webix.message("회원가입");
@@ -28,6 +31,7 @@ const before_login_top_toolbar = {
                     },
                     {
                         view: "button", value: "고객선거",
+                        css: "webix_transparent",
                         width: 100,
                         click: () => {
                             webix.message("고객선거");
@@ -48,6 +52,7 @@ const after_login_top_toolbar = {
                 cols: [
                     {
                         view: "button", value: "로그아웃",
+                        css: "webix_transparent",
                         width: 100,
                         click: () => {
                             webix.ajax().del("/loginout")
@@ -66,6 +71,7 @@ const after_login_top_toolbar = {
                     },
                     {
                         view: "button", value: "회원가입",
+                        css: "webix_transparent",
                         width: 100,
                         click: () => {
                             webix.message("회원가입");
@@ -73,6 +79,7 @@ const after_login_top_toolbar = {
                     },
                     {
                         view: "button", value: "고객선거",
+                        css: "webix_transparent",
                         width: 100,
                         click: () => {
                             webix.message("고객선거");
