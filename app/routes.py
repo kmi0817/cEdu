@@ -81,4 +81,14 @@ def idea(submenu) :
 # NFT 생성
 @app.route('/nft')
 def nft() :
-    return "NFT 생성"
+    return 'NFT 생성'
+
+# 판매자
+@app.route('/seller')
+def seller() :
+    return '판매자'
+
+# 구매자
+@app.route('/buyer')
+def buyer() :
+    return 'buyer'
