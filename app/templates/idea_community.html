@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>cEdu</title>
+    <script src="//cdn.webix.com/edge/webix.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="../static/css/webix.css" type="text/css">
+    <!-- <link rel="stylesheet" href="http://cdn.webix.com/edge/webix.css" type="text/css"> -->
+    <script src="../static/webix_ui/header.js" type="text/javascript"></script>
+    <script src="../static/webix_ui/form_popup.js" type="text/javascript"></script>
+</head>
+
+<body>
+    <script>
+        webix.ready(() => {
+            webix.ui({
+                view: "scrollview",
+                scroll: "auto",
+                body: {
+                    align: "center", body: {
+                        rows: [
+                            {% if login %}
+                            after_login_header,
+                            {% else %}
+                            before_login_header,
+                            {% endif %}
+                            {
+                                view: "spacer",
+                                height: 80
+                            },
+                            {
+                                width: 1234, rows: [
+                                    {
+                                        template: "커뮤니티",
+                                        autowidth: true,
+                                        autoheight: true
+                                    },
+                                    {
+                                        view: "dataview", id: "community_list",
+                                        width: 1234,
+                                        height: 300,
+                                        type: {
+                                            height: 250,
+                                            width: 300
+                                        },
+                                        template: `
+                                            <h3>#title#</h3>
+                                            <div style="padding: 5px">
+                                                #body#
+                                            </div>
+                                        `,
+                                        select: true,
+                                        data: [
+                                            {
+                                                id: 1, title: "Test Community!",
+                                                body: "Data widgets are used to present data of a specified type on the page. Such widgets manage the space allocated for their data and provide functionality for its access and configuration."
+                                            },
+                                            {
+                                                id: 2, title: "Test 2",
+                                                body: "Data widgets are used to present data of a specified type on the page. Such widgets manage the space allocated for their data and provide functionality for its access and configuration."
+                                            },
+                                            {
+                                                id: 3, title: "Test 3 Community!",
+                                                body: "Data widgets are used to present data of a specified type on the page. Such widgets manage the space allocated for their data and provide functionality for its access and configuration."
+                                            },
+                                            {
+                                                id: 4, title: "Test 4",
+                                                body: "Data widgets are used to present data of a specified type on the page. Such widgets manage the space allocated for their data and provide functionality for its access and configuration."
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        view: "spacer", height: 50
+                                    },
+                                    {
+                                        template: "프로젝트",
+                                        autowidth: true,
+                                        autoheight: true
+                                    },
+                                    {
+                                        view: "list", id: "project_list",
+                                        width: 1234,
+                                        height: 300,
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                }
+            });
+        })
+    </script>
+</body>
+
+</html>
