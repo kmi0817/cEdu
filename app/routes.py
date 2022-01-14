@@ -19,6 +19,10 @@ def hello() :
     return '지식 거래 장터 소개'
 
 # 동료 평가
+@app.route('/peer-feedback')
+def peer_feedback() :
+    return '동료평가'
+
 @app.route('/register/<subject>')
 def register(subject) :
     if subject == 'specialists' :
@@ -57,7 +61,9 @@ def odi() :
 # 아이디어 장터 메뉴
 @app.route('/idea/<submenu>')
 def idea(submenu) :
-    if submenu == 'challenge' :
+    if submenu == 'market' :
+        return '아이디어 장터'
+    elif submenu == 'challenge' :
         return '아이디어 도전'
     elif submenu == 'basket' :
         return '아이디어 바구니'
