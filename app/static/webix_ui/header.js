@@ -122,7 +122,7 @@ const main_menu = {
             id: "odi", value: "ODI"
         },
         {
-            id: "idea", value: "아이디어 장터", submenu: [
+            id: "idea/market", value: "아이디어 장터", submenu: [
                 {
                     id: "idea/challenge", value: "아이디어 도전"
                 },
@@ -140,9 +140,7 @@ const main_menu = {
     ],
     on: {
         onMenuItemClick: (id) => {
-            if (id != "peer-feedback" && id != "idea") {
-                location.href="/" + id;
-            }
+            location.href="/" + id;
         }
     }
 }
