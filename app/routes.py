@@ -61,6 +61,13 @@ def odi() :
 # 아이디어 장터 메뉴
 @app.route('/idea/<submenu>')
 def idea(submenu) :
+    # sessino check
+    if 'login' in session :
+        login = True
+    else :
+        login = False
+
+    # idea routes
     if submenu == 'market' :
         return '아이디어 장터'
     elif submenu == 'challenge' :
@@ -68,7 +75,7 @@ def idea(submenu) :
     elif submenu == 'basket' :
         return '아이디어 바구니'
     elif submenu == 'community' :
-        return '커뮤니티'
+        return render_template('idea_community.html', login=login)
 
 # NFT 생성
 @app.route('/nft')
