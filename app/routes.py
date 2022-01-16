@@ -1,6 +1,5 @@
 from app import app
 from flask import render_template, request, session
-import requests
 
 @app.route('/')
 def index() :
@@ -9,9 +8,6 @@ def index() :
     else :
         login = False
     return render_template('index.html', login=login)
-
-
-
 
 # 지식 거래 장터 소개
 @app.route('/hello')
@@ -69,13 +65,13 @@ def idea(submenu) :
 
     # idea routes
     if submenu == 'market' :
-        return '아이디어 장터'
+        return render_template('idea/community2.html', login=login)
     elif submenu == 'challenge' :
         return '아이디어 도전'
     elif submenu == 'basket' :
         return '아이디어 바구니'
     elif submenu == 'community' :
-        return render_template('idea_community.html', login=login)
+        return render_template('idea/community.html', login=login)
 
 # NFT 생성
 @app.route('/nft')
