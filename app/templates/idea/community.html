@@ -32,16 +32,15 @@
                             {
                                 width: 1234, rows: [
                                     {
-                                        template: "커뮤니티",
+                                        template: "<h3>커뮤니티</h3>",
                                         autowidth: true,
                                         autoheight: true
                                     },
                                     {
-                                        view: "dataview", id: "community_list",
-                                        width: 1234,
+                                        view: "dataview", id: "community_dataview",
                                         height: 300,
                                         type: {
-                                            height: 250,
+                                            height: 200,
                                             width: 300
                                         },
                                         template: `
@@ -51,39 +50,36 @@
                                             </div>
                                         `,
                                         select: true,
-                                        data: [
-                                            {
-                                                id: 1, title: "Test Community!",
-                                                body: "Data widgets are used to present data of a specified type on the page. Such widgets manage the space allocated for their data and provide functionality for its access and configuration."
-                                            },
-                                            {
-                                                id: 2, title: "Test 2",
-                                                body: "Data widgets are used to present data of a specified type on the page. Such widgets manage the space allocated for their data and provide functionality for its access and configuration."
-                                            },
-                                            {
-                                                id: 3, title: "Test 3 Community!",
-                                                body: "Data widgets are used to present data of a specified type on the page. Such widgets manage the space allocated for their data and provide functionality for its access and configuration."
-                                            },
-                                            {
-                                                id: 4, title: "Test 4",
-                                                body: "Data widgets are used to present data of a specified type on the page. Such widgets manage the space allocated for their data and provide functionality for its access and configuration."
-                                            }
-                                        ]
+                                        url: "http://220.149.235.76:5000/models"
                                     },
                                     {
                                         view: "spacer", height: 50
                                     },
                                     {
-                                        template: "프로젝트",
+                                        template: "<h3>프로젝트</h3>",
                                         autowidth: true,
                                         autoheight: true
                                     },
                                     {
-                                        view: "list", id: "project_list",
-                                        width: 1234,
+                                        view: "dataview", id: "project_dataview",
                                         height: 300,
+                                        type: {
+                                            height: 200,
+                                            width: 300
+                                        },
+                                        template: `
+                                            <h3>#title#</h3>
+                                            <div style="padding: 5px">
+                                                #body#
+                                            </div>
+                                        `,
+                                        select: true,
+                                        url: "http://220.149.235.76:5000/models"
                                     }
                                 ]
+                            },
+                            {
+                                view: "spacer", height: 50
                             }
                         ]
                     }
