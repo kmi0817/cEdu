@@ -65,7 +65,7 @@ def idea(submenu) :
 
     # idea routes
     if submenu == 'market' :
-        return render_template('idea/community2.html', login=login)
+        return '아이디어 마켓'
     elif submenu == 'challenge' :
         return '아이디어 도전'
     elif submenu == 'basket' :
@@ -112,3 +112,13 @@ def loginout(action) :
         values = request.get_json(force=True)
         print(values)
         return 'signup temp OK'
+
+
+# temporary routes for TEST
+@app.route('/temp')
+def temp_index() :
+    return render_template('temp/index2.html')
+
+@app.route('/temp/community')
+def temp_community() :
+    return render_template('temp/community2.html')
