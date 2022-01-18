@@ -1,5 +1,18 @@
 from app import app
-from flask import render_template, request, session, jsonify
+from flask import render_template, request, session, jsonify, Response
+import pymongo
+import json
+
+try :
+    mongo = pymongo.MongoClient(
+        host="localhost",
+        port=27017,
+        serverSelectionTimeoutMs = 1000
+    )
+    db = mongo.cEdu
+    mongo.server_info() # trigger exception if cannot connect to db
+except :
+    print("** error - cannot connect to DB")
 
 @app.route('/')
 def index() :
@@ -89,29 +102,55 @@ def buyer() :
     return 'buyer'
 
 
-# process 관련 (로그인, 로그아웃, 회원가입 등)
-@app.route('/process/<action>', methods=['POST', 'DELETE'])
-def loginout(action) :
-    if action == 'loginout' :
-        if request.method == 'POST' :
-            values = request.get_json(force=True)
-            id = values['id']
-            password = values['password']
-
-            if id == 'asd@asd.com' and password == 'asd' :
-                session['login'] = id
-                return 'login successful'
-            else :
-                return 'login failed'
-
-        elif request.method == 'DELETE' :
-            session.clear()
-            return 'logout successful'
-
-    elif action == 'signup' :
+# login, logout
+@app.route('/loginout', methods=['POST', 'DELETE'])
+def loginout() :
+    if request.method == 'POST' :
         values = request.get_json(force=True)
         print(values)
-        return 'signup temp OK'
+        try :
+            results = list(db.users.find_one())
+            print(results)
+            return Response(
+                response= json.dumps({ 'message': 'succeed login' }),
+                status= 200,
+                mimetype='application/json'
+            )
+            
+        except Exception as exception :
+            print(exception)
+            return Response(
+                response= json.dumps({ 'message': 'cannot read a user' }),
+                status= 500,
+                mimetype='application/json'
+            )
+
+    elif request.method == 'DELETE' :
+        session.pop('login', None)
+        return 'logout successful'
+
+# users - create, delete, update user
+@app.route('/users', methods=['POST', 'DELETE', 'PATCH'])
+def users() :
+    if request.method == 'POST' :
+        values = request.get_json(force=True)
+        user = {
+            'email': values['email'],
+            'password': values['password']
+        }
+        results = db.users.insert_one(user)
+        print(results.inserted_id)
+        return Response(
+            response= json.dumps(
+                { 'message': 'create user', 'id': results.inserted_id }
+            ),
+            status= 200,
+            mimetype='application/json'
+        )
+    elif request.method == 'DELETE' :
+        return 'delete user'
+    elif request.method == 'PATCH' :
+        return 'update user'
 
 @app.route('/models')
 def models() :
