@@ -55,7 +55,7 @@ const after_login_top_toolbar = {
                         css: "webix_transparent",
                         width: 100,
                         click: () => {
-                            webix.ajax().del("/process/loginout")
+                            webix.ajax().del("/loginout")
                             .then((res) => {
                                 var response = res.text();
                                 if (response == "logout successful") {
