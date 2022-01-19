@@ -34,18 +34,15 @@ webix.ready(() => {
                                 var form = $$("login_form");
                                 if (form.validate()) {
                                     var values = form.getValues();
-                                    console.log(values);
                                     webix.ajax().post("/loginout", JSON.stringify(values))
                                         .then((res) => {
                                             var response = res.text();
-                                            console.log(response);
-                                            location.href="/";
-                                            // if (response == "login successful") {
-                                            //     $$("login_popup").hide();
-                                            //     location.href = "/";
-                                            // } else {
-                                            //     webix.message({ type: "error", text: "일치하는 회원 정보가 없습니다." });
-                                            // }
+                                            if (response == "login successful") {
+                                                $$("login_popup").hide();
+                                                location.href = "/";
+                                            } else {
+                                                webix.message({ type: "error", text: "일치하는 회원 정보가 없습니다." });
+                                            }
                                         })
                                 }
                             }
@@ -59,7 +56,7 @@ webix.ready(() => {
                 }
             ],
             rules: {
-                "id": webix.rules.isNotEmpty,
+                "email": webix.rules.isEmail,
                 "password": webix.rules.isNotEmpty
             }
         }
@@ -102,14 +99,12 @@ webix.ready(() => {
                                     webix.ajax().post("/users", JSON.stringify(values))
                                         .then((res) => {
                                             var response = res.text();
-                                            console.log(response);
-                                            location.href="/";
-                                            // if (response == 'signup temp OK') {
-                                            //     $$("signup_popup").hide();
-                                            //     location.href="/";
-                                            // } else {
-                                            //     webix.message({ type: "error", text: "회원가입에 문제가 발생했습니다." });
-                                            // }
+                                            if (response == 'signup successful') {
+                                                $$("signup_popup").hide();
+                                                location.href="/";
+                                            } else {
+                                                webix.message({ type: "error", text: "회원가입에 문제가 발생했습니다." });
+                                            }
                                         })
                                 }
                             }
@@ -123,8 +118,7 @@ webix.ready(() => {
                 }
             ],
             rules: {
-                "id": webix.rules.isNotEmpty,
-                "id": webix.rules.isEmail,
+                "email": webix.rules.isEmail,
                 "password": webix.rules.isNotEmpty
             }
         }

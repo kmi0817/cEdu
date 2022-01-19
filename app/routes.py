@@ -1,7 +1,6 @@
 from app import app
-from flask import render_template, request, session, jsonify, Response
+from flask import render_template, request, session, jsonify
 import pymongo
-import json
 
 try :
     mongo = pymongo.MongoClient(
@@ -107,23 +106,17 @@ def buyer() :
 def loginout() :
     if request.method == 'POST' :
         values = request.get_json(force=True)
-        print(values)
         try :
-            results = list(db.users.find_one())
-            print(results)
-            return Response(
-                response= json.dumps({ 'message': 'succeed login' }),
-                status= 200,
-                mimetype='application/json'
-            )
+            results = db.users.find_one({ 'email': values['email'] }) # read from db
+
+            if results['password'] == values['password'] : # check if password matched
+                session['login'] = values['email']
+                return 'login successful'
+            else :
+                return 'login failed'
             
-        except Exception as exception :
-            print(exception)
-            return Response(
-                response= json.dumps({ 'message': 'cannot read a user' }),
-                status= 500,
-                mimetype='application/json'
-            )
+        except Exception : # if cannot read from db
+            return 'login failed'
 
     elif request.method == 'DELETE' :
         session.pop('login', None)
@@ -138,15 +131,13 @@ def users() :
             'email': values['email'],
             'password': values['password']
         }
-        results = db.users.insert_one(user)
-        print(results.inserted_id)
-        return Response(
-            response= json.dumps(
-                { 'message': 'create user', 'id': results.inserted_id }
-            ),
-            status= 200,
-            mimetype='application/json'
-        )
+        try :
+            results = db.users.insert_one(user)
+            print(f'signup id: {results.inserted_id}')
+            return 'signup successful'
+        except :
+            return 'singup failed'
+
     elif request.method == 'DELETE' :
         return 'delete user'
     elif request.method == 'PATCH' :
