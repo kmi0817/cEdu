@@ -192,41 +192,11 @@ def writings(slug) :
 
 @app.route('/models')
 def models() :
-    test_data = [
-        {
-            "id": 1, "title": "Test Community!",
-            "body": "Data widgets are used to present data of a specified type on the page. Such widgets manage the space allocated for their data and provide functionality for its access and configuration."
-        },
-        {
-            "id": 2, "title": "Test 2",
-            "body": "Data widgets are used to present data of a specified type on the page. Such widgets manage the space allocated for their data and provide functionality for its access and configuration."
-        },
-        {
-            "id": 3, "title": "Test 3 Community!",
-            "body": "Data widgets are used to present data of a specified type on the page. Such widgets manage the space allocated for their data and provide functionality for its access and configuration."
-        },
-        {
-            "id": 4, "title": "Test 4",
-            "body": "Data widgets are used to present data of a specified type on the page. Such widgets manage the space allocated for their data and provide functionality for its access and configuration."
-        },
-        {
-            "id": 5, "title": "Test Community!",
-            "body": "Data widgets are used to present data of a specified type on the page. Such widgets manage the space allocated for their data and provide functionality for its access and configuration."
-        },
-        {
-            "id": 6, "title": "Test 2",
-            "body": "Data widgets are used to present data of a specified type on the page. Such widgets manage the space allocated for their data and provide functionality for its access and configuration."
-        },
-        {
-            "id": 7, "title": "Test 3 Community!",
-            "body": "Data widgets are used to present data of a specified type on the page. Such widgets manage the space allocated for their data and provide functionality for its access and configuration."
-        },
-        {
-            "id": 8, "title": "Test 4",
-            "body": "Data widgets are used to present data of a specified type on the page. Such widgets manage the space allocated for their data and provide functionality for its access and configuration."
-        }
-    ]
-    return jsonify(test_data)
+    results = db.community.find({}, {'_id': 0})
+    data = []
+    for result in results :
+        data.append(result)
+    return jsonify(data)
 
 # temporary routes for TEST
 @app.route('/temp')
