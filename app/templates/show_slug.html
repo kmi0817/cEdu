@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="card">
+    <h5 class="card-header">{{ results.category }}</h5>
+    <div class="card-body">
+        <h5 class="card-title">{{ results.title }} </h5>
+        <div class="text-muted mb-1">
+            {{ results.created }}
+        </div>
+        <p class="card-text">{{ results.description }}</p>
+        <button id="update" class="btn btn-primary">수정</button>
+        <button id="delete" class="btn btn-danger">삭제</button>
+    </div>
+</div>
+<script>
+$(document).ready(function() {
+    $("#delete").click(function() {
+        $.ajax({
+            type: "DELETE",
+            url: "/{{results.category}}/{{results._id}}",
+            success: function() { location.href="/community"; },
+            error: function(req, status, error) {
+                alert(error);
+            }
+        })
+    })
+})
+</script>
+{% endblock %}
