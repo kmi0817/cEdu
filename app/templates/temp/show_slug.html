@@ -1,9 +1,9 @@
 {% extends 'temp/layout.html' %}
 {% block content %}
 <div class="card">
-    <h5 class="card-header">{{ results.title }}</h5>
+    <h5 class="card-header">{{ results.category }}</h5>
     <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
+        <h5 class="card-title">{{ results.title }}</h5>
         <p class="card-text">{{ results.description }}</p>
         <form action="" method="PATCH" class="d-inline">
             <button type="submit" class="btn btn-primary">수정</button>

@@ -9,29 +9,31 @@
         </form>
     </nav>
     <br>
-    {% for index, result in results.items() %}
+    {% for index, community in communities.items() %}
     {% if index % 2 == 1 %}
     <div class="row">
         <div class="col-sm-6">
             <div class="media" style="margin:0.5rem 0;">
                 <img class="mr-3" src="../../static/img/default.png" alt="image" width=64 height=64>
                 <div class="media-body">
-                    <a href="/temp/community/{{result.slug}}">
-                        <h5 class="mt-0">{{ index }} {{ result.title }}</h5>
+                    <a href="/temp/community/{{community.slug}}">
+                        <h5 class="mt-0">{{ index }} {{ community.title }}</h5>
                     </a>
-                    {{ result.description }}
+                    {{ community.description }}
                 </div>
             </div>
         </div>
+        {% elif index == communities.length %}
+    </div>
         {% else %}
         <div class="col-sm-6">
             <div class="media" style="margin:0.5rem;">
                 <img class="mr-3" src="../../static/img/default.png" alt="image" width=64 height=64>
                 <div class="media-body">
-                    <a href="/temp/community/{{result.slug}}">
-                        <h5 class="mt-0">{{ index }} {{ result.title }}</h5>
+                    <a href="/temp/community/{{community.slug}}">
+                        <h5 class="mt-0">{{ index }} {{ community.title }}</h5>
                     </a>
-                    {{ result.description }}
+                    {{ community.description }}
                 </div>
             </div>
         </div>
@@ -70,17 +72,17 @@
         </form>
     </nav>
     <br>
-    {% for index, result in results.items() %}
+    {% for index, project in projects.items() %}
     {% if index % 2 == 1 %}
     <div class="row">
         <div class="col-sm-6">
             <div class="media" style="margin:0.5rem;">
                 <img class="mr-3" src="../../static/img/default.png" alt="image" width=64 height=64>
                 <div class="media-body">
-                    <a href="/temp/community/{{result.slug}}">
-                        <h5 class="mt-0">{{ index }} {{ result.title }}</h5>
+                    <a href="/temp/project/{{project.slug}}">
+                        <h5 class="mt-0">{{ index }} {{ project.title }}</h5>
                     </a>
-                    {{ result.description }}
+                    {{ project.description }}
                 </div>
             </div>
         </div>
@@ -89,10 +91,10 @@
             <div class="media" style="margin:0.5rem;">
                 <img class="mr-3" src="../../static/img/default.png" alt="image" width=64 height=64>
                 <div class="media-body">
-                    <a href="/temp/community/{{result.slug}}">
-                        <h5 class="mt-0">{{ index }} {{ result.title }}</h5>
+                    <a href="/temp/project/{{project.slug}}">
+                        <h5 class="mt-0">{{ index }} {{ project.title }}</h5>
                     </a>
-                    {{ result.description }}
+                    {{ project.description }}
                 </div>
             </div>
         </div>
@@ -119,5 +121,6 @@
             </li>
         </ul>
     </nav>
+    <button type="button" class="btn btn-secondary" onclick="location.href='/temp/write'">작성</button>
 </div>
 {% endblock %}
