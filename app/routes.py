@@ -1,7 +1,9 @@
+from datetime import datetime
 from app import app
 from flask import render_template, request, session, jsonify, redirect, url_for
 import pymongo
 from slugify import slugify
+from bson.objectid import ObjectId
 
 try :
     mongo = pymongo.MongoClient(
@@ -219,17 +221,33 @@ def temp_community() :
     return render_template('temp/community.html', communities=communities_data, projects=projects_data)
 
 
-@app.route('/temp/community/<slug>')
+@app.route('/temp/community/<slug>', methods=['GET', 'DELETE'])
 def temp_community_slug(slug) :
-    results = db.community.find_one({ 'slug': slug }, { '_id': 0 })
-    print(results)
-    return render_template('temp/show_slug.html', results=results)
+    if request.method == 'GET' :
+        results = db.community.find_one({ 'slug': slug })
+        return render_template('temp/show_slug.html', results=results)
 
-@app.route('/temp/project/<slug>')
+    elif request.method == 'DELETE' :
+        try :
+            db.project.delete_one({ '_id': ObjectId(slug), 'category': 'community' })
+            print(f'*** community {slug} deleted')
+        except Exception as exception :
+            print(exception)
+        return 'HI'
+
+@app.route('/temp/project/<slug>', methods=['GET', 'DELETE'])
 def temp_project_slug(slug) :
-    results = db.project.find_one({ 'slug': slug }, { '_id': 0 })
-    print(results)
-    return render_template('temp/show_slug.html', results=results)
+    if request.method == 'GET' :
+        results = db.project.find_one({ 'slug': slug })
+        return render_template('temp/show_slug.html', results=results)
+
+    elif request.method == 'DELETE' :
+        try :
+            db.project.delete_one({ '_id': ObjectId(slug), 'category': 'project' })
+            print(f'*** project {slug} deleted')
+        except Exception as exception :
+            print(exception)
+        return 'HI'
 
 @app.route('/temp/write', methods=['GET', 'POST'])
 def temp_write() :
@@ -243,7 +261,8 @@ def temp_write() :
                 'title': values['title'],
                 'description': values['description'],
                 'slug': slugify(values['title']),
-                'category': values['category']
+                'category': values['category'],
+                'created': datetime.now()
             }
 
             if values['category'] == 'community' :
