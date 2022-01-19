@@ -99,7 +99,9 @@ webix.ready(() => {
                                     webix.ajax().post("/users", JSON.stringify(values))
                                         .then((res) => {
                                             var response = res.text();
-                                            if (response == 'signup successful') {
+                                            if (response == 'duplicated') {
+                                                webix.message({ type: "debug", text: "사용할 수 없는 이메일입니다." });
+                                            } else if (response == 'signup successful') {
                                                 $$("signup_popup").hide();
                                                 location.href="/";
                                             } else {

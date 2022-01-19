@@ -127,6 +127,15 @@ def loginout() :
 def users() :
     if request.method == 'POST' :
         values = request.get_json(force=True)
+
+        # check if email is duplicated
+        try :
+            db.users.find_one({ 'email': values['email'] })
+            return 'duplicated'
+        except Exception :
+            pass
+
+        # add a new user
         user = {
             'email': values['email'],
             'password': values['password']
@@ -135,7 +144,7 @@ def users() :
             results = db.users.insert_one(user)
             print(f'signup id: {results.inserted_id}')
             return 'signup successful'
-        except :
+        except Exception:
             return 'singup failed'
 
     elif request.method == 'DELETE' :
