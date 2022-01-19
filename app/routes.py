@@ -1,5 +1,5 @@
 from app import app
-from flask import render_template, request, session, jsonify
+from flask import render_template, request, session, jsonify, redirect, url_for
 import pymongo
 from slugify import slugify
 
@@ -205,32 +205,55 @@ def temp_index() :
 
 @app.route('/temp/community')
 def temp_community() :
-    results = db.community.find({}, {'_id': 0})
-    data = {}
-    for index, result in enumerate(results) :
-        data[index+1] = result
-    return render_template('temp/community2.html', results=data)
+    # Read from community
+    communities = db.community.find({}, {'_id': 0})
+    communities_data = {}
+    for index, result in enumerate(communities) :
+        communities_data[index+1] = result
+
+    # Read from project
+    projects = db.project.find({}, {'_id': 0})
+    projects_data = {}
+    for index, result in enumerate(projects) :
+        projects_data[index+1] = result
+    return render_template('temp/community.html', communities=communities_data, projects=projects_data)
 
 
 @app.route('/temp/community/<slug>')
 def temp_community_slug(slug) :
     results = db.community.find_one({ 'slug': slug }, { '_id': 0 })
     print(results)
-    return render_template('temp/community_slug.html', results=results)
+    return render_template('temp/show_slug.html', results=results)
+
+@app.route('/temp/project/<slug>')
+def temp_project_slug(slug) :
+    results = db.project.find_one({ 'slug': slug }, { '_id': 0 })
+    print(results)
+    return render_template('temp/show_slug.html', results=results)
 
 @app.route('/temp/write', methods=['GET', 'POST'])
 def temp_write() :
     if request.method == 'GET' :
         return render_template('temp/write.html')
+
     elif request.method == 'POST' :
         try :
             values = request.form
             writing = {
                 'title': values['title'],
                 'description': values['description'],
-                'slug': slugify(values['title'])
+                'slug': slugify(values['title']),
+                'category': values['category']
             }
-            db.community.insert_one(writing)
-            return 'OK'
-        except Exception :
+
+            if values['category'] == 'community' :
+                db.community.insert_one(writing) # community collection inserted
+                return redirect(url_for('temp_community_slug', slug=slugify(values['title'])))
+            elif values['category'] == 'project' :
+                db.project.insert_one(writing) # project collection inserted
+                return redirect(url_for('temp_project_slug', slug=slugify(values['title'])))
+
+
+        except Exception as exception :
+            print(exception)
             return 'failed'
