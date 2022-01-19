@@ -27,7 +27,8 @@
     <div class="container">
 
         <div class="media">
-            <a href="/temp"><img class="mr-3" src="../../static/cEdu_logo.png" alt="Generic placeholder image" width="150"></a>
+            <a href="/temp"><img class="mr-3" src="../../static/cEdu_logo.png" alt="Generic placeholder image"
+                    width="150"></a>
             <div class="media-body">
 
                 <div>
@@ -173,43 +174,104 @@
         <br>
         <br>
 
-        <div class="row">
-            <div class="col-sm-3">
-                <div class="card text-center">
-                    <div class="card-body">
-                        <h5 class="card-title">평가</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+        <div style="border:1px solid rgba(0,0,0,.125); border-radius: 0.25rem; padding: 1rem; margin: 1rem 0;">
+            <h3>커뮤니티</h3>
+            <br>
+            {% for index, result in results.items() %}
+            {% if index % 2 == 1 %}
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="media" style="margin:0.5rem;">
+                        <img class="mr-3" src="../../static/img/default.png" alt="image" width=64 height=64>
+                        <div class="media-body">
+                            <a href="/temp/community/{{result.slug}}"><h5 class="mt-0">{{ index }} {{ result.title }}</h5></a>
+                            {{ result.description }}
+                        </div>
+                    </div>
+                </div>
+                {% else %}
+                <div class="col-sm-6">
+                    <div class="media" style="margin:0.5rem;">
+                        <img class="mr-3" src="../../static/img/default.png" alt="image" width=64 height=64>
+                        <div class="media-body">
+                            <a href="/temp/community/{{result.slug}}"><h5 class="mt-0">{{ index }} {{ result.title }}</h5></a>
+                            {{ result.description }}
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-3">
-                <div class="card text-center">
-                    <div class="card-body">
-                        <h5 class="card-title">판매자</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+            {% endif %}
+            {% endfor %}
+            <br>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center" style="margin:0;">
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <div style="border:1px solid rgba(0,0,0,.125); border-radius: 0.25rem; padding: 1rem; margin: 1rem 0;">
+            <h3>프로젝트</h3>
+            <br>
+            {% for index, result in results.items() %}
+            {% if index % 2 == 1 %}
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="media" style="margin:0.5rem;">
+                        <img class="mr-3" src="../../static/img/default.png" alt="image" width=64 height=64>
+                        <div class="media-body">
+                            <a href="/temp/community/{{result.slug}}"><h5 class="mt-0">{{ index }} {{ result.title }}</h5></a>
+                            {{ result.description }}
+                        </div>
+                    </div>
+                </div>
+                {% else %}
+                <div class="col-sm-6">
+                    <div class="media" style="margin:0.5rem;">
+                        <img class="mr-3" src="../../static/img/default.png" alt="image" width=64 height=64>
+                        <div class="media-body">
+                            <a href="/temp/community/{{result.slug}}"><h5 class="mt-0">{{ index }} {{ result.title }}</h5></a>
+                            {{ result.description }}
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-3">
-                <div class="card text-center">
-                    <div class="card-body">
-                        <h5 class="card-title">구매자</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="card text-center">
-                    <div class="card-body">
-                        <h5 class="card-title">경매</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div>
+            {% endif %}
+            {% endfor %}
+            <br>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center" style="margin:0;">
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
         </div>
     </div>
 </body>

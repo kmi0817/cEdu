@@ -205,4 +205,8 @@ def temp_index() :
 
 @app.route('/temp/community')
 def temp_community() :
-    return render_template('temp/community2.html')
+    results = db.community.find({}, {'_id': 0})
+    data = {}
+    for index, result in enumerate(results) :
+        data[index+1] = result
+    return render_template('temp/community2.html', results=data)
