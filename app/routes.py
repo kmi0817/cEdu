@@ -210,3 +210,10 @@ def temp_community() :
     for index, result in enumerate(results) :
         data[index+1] = result
     return render_template('temp/community2.html', results=data)
+
+
+@app.route('/temp/community/<slug>')
+def temp_community_slug(slug) :
+    results = db.community.find_one({ 'slug': slug }, { '_id': 0 })
+    print(results)
+    return render_template('temp/community_slug.html', results=results)
