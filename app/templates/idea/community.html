@@ -32,9 +32,23 @@
                             {
                                 width: 1234, rows: [
                                     {
-                                        template: "<h3>커뮤니티</h3>",
-                                        autowidth: true,
-                                        autoheight: true
+                                        cols: [
+                                            {
+                                                template: "<h3>커뮤니티</h3>",
+                                                autowidth: true,
+                                                autoheight: true,
+                                                borderless: true
+                                            },
+                                            {
+                                                view: "button", value: "작성",
+                                                autowidth: true,
+                                                css: "webix_transparent",
+                                                click: () => {
+                                                    location.href="/write/community"
+                                                }
+                                            }
+                                        ]
+                                        
                                     },
                                     {
                                         view: "dataview", id: "community_dataview",

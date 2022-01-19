@@ -1,6 +1,7 @@
 from app import app
 from flask import render_template, request, session, jsonify
 import pymongo
+from slugify import slugify
 
 try :
     mongo = pymongo.MongoClient(
@@ -101,6 +102,8 @@ def buyer() :
     return 'buyer'
 
 
+# ### DB related ###
+
 # login, logout
 @app.route('/loginout', methods=['POST', 'DELETE'])
 def loginout() :
@@ -151,6 +154,41 @@ def users() :
         return 'delete user'
     elif request.method == 'PATCH' :
         return 'update user'
+
+# write
+@app.route('/write/<menu>', methods=['GET', 'POST'])
+def write(menu) :
+    if menu == 'community' :
+        if request.method == 'GET' :
+            return render_template('idea/write.html')
+        elif request.method == 'POST' :
+            values = request.get_json(force=True)
+
+            # add a new writing
+            writing = {
+                'title': values['title'],
+                'description': values['description'],
+                'slug': slugify(values['title'])
+            }
+            try :
+                results = db.community.insert_one(writing)
+                print(f'written id: {results.inserted_id}')
+                print(slugify(values['title']))
+                return slugify(values['title'])
+
+            except Exception:
+                return 'writing failed'
+
+# writings
+@app.route('/writings/<slug>')
+def writings(slug) :
+    results = db.community.find_one({ 'slug': slug })
+
+    return {
+        'title': results['title'],
+        'description': results['description'],
+        'slug': results['slug']
+    }
 
 @app.route('/models')
 def models() :
