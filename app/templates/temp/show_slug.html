@@ -4,6 +4,9 @@
     <h5 class="card-header">{{ results.category }}</h5>
     <div class="card-body">
         <h5 class="card-title">{{ results.title }}</h5>
+        <div class="text-muted mb-1">
+            {{ results.created }}
+        </div>
         <p class="card-text">{{ results.description }}</p>
         <form action="" method="PATCH" class="d-inline">
             <button type="submit" class="btn btn-primary">수정</button>
