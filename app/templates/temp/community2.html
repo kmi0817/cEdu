@@ -1,16 +1,24 @@
 {% extends 'temp/layout.html' %}
 {% block content %}
 <div style="border:1px solid rgba(0,0,0,.125); border-radius: 0.25rem; padding: 1rem; margin: 1rem 0;">
-    <h3>커뮤니티</h3>
+    <nav class="navbar navbar-light bg-light justify-content-between">
+        <a class="navbar-brand">커뮤니티</a>
+        <form class="form-inline">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">검색</button>
+        </form>
+    </nav>
     <br>
     {% for index, result in results.items() %}
     {% if index % 2 == 1 %}
     <div class="row">
         <div class="col-sm-6">
-            <div class="media" style="margin:0.5rem;">
+            <div class="media" style="margin:0.5rem 0;">
                 <img class="mr-3" src="../../static/img/default.png" alt="image" width=64 height=64>
                 <div class="media-body">
-                    <a href="/temp/community/{{result.slug}}"><h5 class="mt-0">{{ index }} {{ result.title }}</h5></a>
+                    <a href="/temp/community/{{result.slug}}">
+                        <h5 class="mt-0">{{ index }} {{ result.title }}</h5>
+                    </a>
                     {{ result.description }}
                 </div>
             </div>
@@ -20,7 +28,9 @@
             <div class="media" style="margin:0.5rem;">
                 <img class="mr-3" src="../../static/img/default.png" alt="image" width=64 height=64>
                 <div class="media-body">
-                    <a href="/temp/community/{{result.slug}}"><h5 class="mt-0">{{ index }} {{ result.title }}</h5></a>
+                    <a href="/temp/community/{{result.slug}}">
+                        <h5 class="mt-0">{{ index }} {{ result.title }}</h5>
+                    </a>
                     {{ result.description }}
                 </div>
             </div>
@@ -48,10 +58,17 @@
             </li>
         </ul>
     </nav>
+    <button type="button" class="btn btn-secondary" onclick="location.href='/temp/write'">작성</button>
 </div>
 
 <div style="border:1px solid rgba(0,0,0,.125); border-radius: 0.25rem; padding: 1rem; margin: 1rem 0;">
-    <h3>프로젝트</h3>
+    <nav class="navbar navbar-light bg-light justify-content-between">
+        <a class="navbar-brand">프로젝트</a>
+        <form class="form-inline">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">검색</button>
+        </form>
+    </nav>
     <br>
     {% for index, result in results.items() %}
     {% if index % 2 == 1 %}
@@ -60,7 +77,9 @@
             <div class="media" style="margin:0.5rem;">
                 <img class="mr-3" src="../../static/img/default.png" alt="image" width=64 height=64>
                 <div class="media-body">
-                    <a href="/temp/community/{{result.slug}}"><h5 class="mt-0">{{ index }} {{ result.title }}</h5></a>
+                    <a href="/temp/community/{{result.slug}}">
+                        <h5 class="mt-0">{{ index }} {{ result.title }}</h5>
+                    </a>
                     {{ result.description }}
                 </div>
             </div>
@@ -70,7 +89,9 @@
             <div class="media" style="margin:0.5rem;">
                 <img class="mr-3" src="../../static/img/default.png" alt="image" width=64 height=64>
                 <div class="media-body">
-                    <a href="/temp/community/{{result.slug}}"><h5 class="mt-0">{{ index }} {{ result.title }}</h5></a>
+                    <a href="/temp/community/{{result.slug}}">
+                        <h5 class="mt-0">{{ index }} {{ result.title }}</h5>
+                    </a>
                     {{ result.description }}
                 </div>
             </div>
