@@ -13,6 +13,7 @@ python run.py
 # Mac should use pip3
 pip install Flask
 pip install pymongo
+pip install python-slugify
 ```
 
 - use Flask as Server
