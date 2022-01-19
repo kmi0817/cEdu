@@ -217,3 +217,20 @@ def temp_community_slug(slug) :
     results = db.community.find_one({ 'slug': slug }, { '_id': 0 })
     print(results)
     return render_template('temp/community_slug.html', results=results)
+
+@app.route('/temp/write', methods=['GET', 'POST'])
+def temp_write() :
+    if request.method == 'GET' :
+        return render_template('temp/write.html')
+    elif request.method == 'POST' :
+        try :
+            values = request.form
+            writing = {
+                'title': values['title'],
+                'description': values['description'],
+                'slug': slugify(values['title'])
+            }
+            db.community.insert_one(writing)
+            return 'OK'
+        except Exception :
+            return 'failed'
