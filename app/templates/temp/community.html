@@ -23,8 +23,9 @@
                 </div>
             </div>
         </div>
-        {% elif index == communities.length %}
+    {% if index == communities | length %}
     </div>
+    {% endif %}
         {% else %}
         <div class="col-sm-6">
             <div class="media" style="margin:0.5rem;">
@@ -86,6 +87,9 @@
                 </div>
             </div>
         </div>
+    {% if index == projects | length %}
+    </div>
+    {% endif %}
         {% else %}
         <div class="col-sm-6">
             <div class="media" style="margin:0.5rem;">
