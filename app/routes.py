@@ -16,6 +16,7 @@ try :
 except :
     print("** error - cannot connect to DB")
 
+
 @app.route('/')
 def index() :
     if 'login' in session :
@@ -85,8 +86,6 @@ def idea(submenu) :
         return '아이디어 도전'
     elif submenu == 'basket' :
         return '아이디어 바구니'
-    elif submenu == 'community' :
-        return render_template('idea/community.html', login=login)
 
 # NFT 생성
 @app.route('/nft')
@@ -102,9 +101,6 @@ def seller() :
 @app.route('/buyer')
 def buyer() :
     return 'buyer'
-
-
-# ### DB related ###
 
 # login, logout
 @app.route('/loginout', methods=['POST', 'DELETE'])
@@ -157,45 +153,75 @@ def users() :
     elif request.method == 'PATCH' :
         return 'update user'
 
-# write
-@app.route('/write/<menu>', methods=['GET', 'POST'])
-def write(menu) :
-    if menu == 'community' :
-        if request.method == 'GET' :
-            return render_template('idea/write.html')
-        elif request.method == 'POST' :
-            values = request.get_json(force=True)
 
-            # add a new writing
+@app.route('/community')
+def community() :
+    # Read from community
+    communities = db.community.find({}, {'_id': 0})
+    communities_data = {}
+    for index, result in enumerate(communities) :
+        communities_data[index+1] = result
+
+    # Read from project
+    projects = db.project.find({}, {'_id': 0})
+    projects_data = {}
+    for index, result in enumerate(projects) :
+        projects_data[index+1] = result
+    return render_template('community.html', communities=communities_data, projects=projects_data)
+
+
+@app.route('/community/<slug>', methods=['GET', 'DELETE'])
+def community_slug(slug) :
+    if request.method == 'GET' :
+        results = db.community.find_one({ 'slug': slug, 'category': 'community' })
+        return render_template('show_slug.html', results=results)
+
+    elif request.method == 'DELETE' :
+        try :
+            db.project.delete_one({ '_id': ObjectId(slug), 'category': 'community' })
+            print(f'*** community {slug} deleted')
+        except Exception as exception :
+            print(exception)
+        return 'HI'
+
+@app.route('/project/<slug>', methods=['GET', 'DELETE'])
+def project_slug(slug) :
+    if request.method == 'GET' :
+        results = db.project.find_one({ 'slug': slug, 'category': 'project' })
+        return render_template('show_slug.html', results=results)
+
+    elif request.method == 'DELETE' :
+        try :
+            db.project.delete_one({ '_id': ObjectId(slug), 'category': 'project' })
+            print(f'*** project {slug} deleted')
+        except Exception as exception :
+            print(exception)
+        return 'HI'
+
+@app.route('/write', methods=['GET', 'POST'])
+def write() :
+    if request.method == 'GET' :
+        return render_template('write.html')
+
+    elif request.method == 'POST' :
+        try :
+            values = request.form
             writing = {
                 'title': values['title'],
                 'description': values['description'],
-                'slug': slugify(values['title'])
+                'slug': slugify(values['title']),
+                'category': values['category'],
+                'created': datetime.now()
             }
-            try :
-                results = db.community.insert_one(writing)
-                print(f'written id: {results.inserted_id}')
-                print(slugify(values['title']))
-                return slugify(values['title'])
 
-            except Exception:
-                return 'writing failed'
+            if values['category'] == 'community' :
+                db.community.insert_one(writing) # community collection inserted
+                return redirect(url_for('community_slug', slug=slugify(values['title'])))
+            elif values['category'] == 'project' :
+                db.project.insert_one(writing) # project collection inserted
+                return redirect(url_for('project_slug', slug=slugify(values['title'])))
 
-# writings
-@app.route('/writings/<slug>')
-def writings(slug) :
-    results = db.community.find_one({ 'slug': slug })
 
-    return {
-        'title': results['title'],
-        'description': results['description'],
-        'slug': results['slug']
-    }
-
-@app.route('/models')
-def models() :
-    results = db.community.find({}, {'_id': 0})
-    data = []
-    for result in results :
-        data.append(result)
-    return jsonify(data)
+        except Exception as exception :
+            print(exception)
+            return 'failed'
