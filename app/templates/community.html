@@ -12,11 +12,13 @@
     {% for index, community in communities.items() %}
     {% if index % 2 == 1 %}
     <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-6" style="margin:0.5rem 0;">
             <div class="card">
                 <img class="card-img-top" src="../../static/img/default.png" alt="image" height=64>
                 <div class="card-body">
-                    <h5 class="card-title">{{community.title}}</h5>
+                    <a href="/community/{{ community.slug }}">
+                        <h5 class="card-title">{{community.title}}</h5>
+                    </a>
                     <p class="card-text">{{ community.description }}</p>
                 </div>
             </div>
@@ -25,11 +27,13 @@
     </div>
     {% endif %}
     {% else %}
-    <div class="col-sm-6">
+    <div class="col-sm-6" style="margin:0.5rem 0;">
         <div class="card">
             <img class="card-img-top" src="../../static/img/default.png" alt="image" height=64>
             <div class="card-body">
-                <h5 class="card-title">{{community.title}}</h5>
+                <a href="/community/{{ community.slug }}">
+                    <h5 class="card-title">{{community.title}}</h5>
+                </a>
                 <p class="card-text">{{ community.description }}</p>
             </div>
         </div>
