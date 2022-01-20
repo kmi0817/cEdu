@@ -110,7 +110,7 @@ def community_slug(slug) :
 
     elif request.method == 'DELETE' :
         try :
-            db.project.delete_one({ '_id': ObjectId(slug), 'category': 'community' })
+            db.community.delete_one({ '_id': ObjectId(slug), 'category': 'community' })
             print(f'*** community {slug} deleted')
         except Exception as exception :
             print(exception)
