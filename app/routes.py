@@ -84,15 +84,17 @@ def community() :
         login = False
 
     # Read from community
-    communities = db.community.find({}, {'_id': 0})
+    communities = db.communities.find({ 'category': 'community' }, {'_id': 0})
     communities_data = {}
     for index, result in enumerate(communities) :
+        result['description'] = result['description'][:150] + '...' # make description 150 chars (substr)
         communities_data[index+1] = result
 
     # Read from project
-    projects = db.project.find({}, {'_id': 0})
+    projects = db.communities.find({ 'category': 'project' }, {'_id': 0})
     projects_data = {}
     for index, result in enumerate(projects) :
+        result['description'] = result['description'][:150] + '...' # make description 150 chars (substr)
         projects_data[index+1] = result
     return render_template('community.html', login=login, communities=communities_data, projects=projects_data)
 
@@ -105,12 +107,12 @@ def community_slug(slug) :
         else :
             login = False
 
-        results = db.community.find_one({ 'slug': slug, 'category': 'community' })
+        results = db.communities.find_one({ 'slug': slug, 'category': 'community' })
         return render_template('show_slug.html', login=login, results=results)
 
     elif request.method == 'DELETE' :
         try :
-            db.community.delete_one({ '_id': ObjectId(slug), 'category': 'community' })
+            db.communities.delete_one({ '_id': ObjectId(slug), 'category': 'community' })
             print(f'*** community {slug} deleted')
         except Exception as exception :
             print(exception)
@@ -123,12 +125,12 @@ def project_slug(slug) :
             login = True
         else :
             login = False
-        results = db.project.find_one({ 'slug': slug, 'category': 'project' })
+        results = db.communities.find_one({ 'slug': slug, 'category': 'project' })
         return render_template('show_slug.html', login=login, results=results)
 
     elif request.method == 'DELETE' :
         try :
-            db.project.delete_one({ '_id': ObjectId(slug), 'category': 'project' })
+            db.communities.delete_one({ '_id': ObjectId(slug), 'category': 'project' })
             print(f'*** project {slug} deleted')
         except Exception as exception :
             print(exception)
@@ -141,7 +143,7 @@ def write() :
             login = session['login']
         else :
             login = False
-        return render_template('write.html', login=login)
+        return render_template('write.html', login=login, results=[])
 
     elif request.method == 'POST' :
         values = request.form
@@ -156,13 +158,25 @@ def write() :
         }
 
         try :
+            db.communities.insert_one(writing) # project collection inserted
             if values['category'] == 'community' :
-                db.community.insert_one(writing) # community collection inserted
                 return redirect(url_for('community_slug', slug=slugify(values['title'])))
             elif values['category'] == 'project' :
-                db.project.insert_one(writing) # project collection inserted
                 return redirect(url_for('project_slug', slug=slugify(values['title'])))
 
         except Exception as exception :
             print(f'*** error - {exception}')
             return 'failed'
+
+@app.route('/write/<id>', methods=['GET', 'POST'])
+def write_slug(id) :
+    if request.method == 'GET' :
+        if 'login' in session :
+            login = session['login']
+        else :
+            login = False
+
+        print(f'*** id: {id}')
+        results = db.communities.find_one({ '_id': ObjectId(id) })
+        print(results)
+        return render_template('write.html', login=login, results=results)
