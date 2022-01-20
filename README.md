@@ -26,3 +26,8 @@ pip install python-slugify
 - [ ] 글 수정 기능 추가
 - [ ] 회원가입 수정
 - [ ] 로그인 수정
+
+**4. Reference**
+- MongoDB install (MAC) : https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/
+- connect and use MongoDB : mongosh
+- MongoDB Compass install (MAC) : https://www.mongodb.com/try/download/compass & https://soyoung-new-challenge.tistory.com/95
