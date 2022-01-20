@@ -106,18 +106,19 @@ def buyer() :
 @app.route('/loginout', methods=['POST', 'DELETE'])
 def loginout() :
     if request.method == 'POST' :
-        values = request.get_json(force=True)
+        values = request.form
+        print(values)
         try :
             results = db.users.find_one({ 'email': values['email'] }) # read from db
 
             if results['password'] == values['password'] : # check if password matched
                 session['login'] = values['email']
-                return 'login successful'
+                return '<script>location.href="/";</script>'
             else :
-                return 'login failed'
+                return '<script>alert("일치하는 회원 정보가 없습니다.");history.go(-1);</script>'
             
         except Exception : # if cannot read from db
-            return 'login failed'
+            return '<script>alert("로그인에 실패했습니다.");history.go(-1);</script>'
 
     elif request.method == 'DELETE' :
         session.pop('login', None)
@@ -127,14 +128,12 @@ def loginout() :
 @app.route('/users', methods=['POST', 'DELETE', 'PATCH'])
 def users() :
     if request.method == 'POST' :
-        values = request.get_json(force=True)
+        values = request.form
 
         # check if email is duplicated
-        try :
-            db.users.find_one({ 'email': values['email'] })
+        if db.users.find_one({ 'email': values['email'] }) :
+            print(db.users.find_one({ 'email': values['email'] }))
             return 'duplicated'
-        except Exception :
-            pass
 
         # add a new user
         user = {
@@ -144,7 +143,7 @@ def users() :
         try :
             results = db.users.insert_one(user)
             print(f'signup id: {results.inserted_id}')
-            return 'signup successful'
+            return redirect(url_for(index))
         except Exception:
             return 'singup failed'
 
@@ -156,6 +155,11 @@ def users() :
 
 @app.route('/community')
 def community() :
+    if 'login' in session :
+        login = True
+    else :
+        login = False
+
     # Read from community
     communities = db.community.find({}, {'_id': 0})
     communities_data = {}
@@ -167,14 +171,19 @@ def community() :
     projects_data = {}
     for index, result in enumerate(projects) :
         projects_data[index+1] = result
-    return render_template('community.html', communities=communities_data, projects=projects_data)
+    return render_template('community.html', login=login, communities=communities_data, projects=projects_data)
 
 
 @app.route('/community/<slug>', methods=['GET', 'DELETE'])
 def community_slug(slug) :
     if request.method == 'GET' :
+        if 'login' in session :
+            login = True
+        else :
+            login = False
+
         results = db.community.find_one({ 'slug': slug, 'category': 'community' })
-        return render_template('show_slug.html', results=results)
+        return render_template('show_slug.html', login=login, results=results)
 
     elif request.method == 'DELETE' :
         try :
@@ -187,8 +196,12 @@ def community_slug(slug) :
 @app.route('/project/<slug>', methods=['GET', 'DELETE'])
 def project_slug(slug) :
     if request.method == 'GET' :
+        if 'login' in session :
+            login = True
+        else :
+            login = False
         results = db.project.find_one({ 'slug': slug, 'category': 'project' })
-        return render_template('show_slug.html', results=results)
+        return render_template('show_slug.html', login=login, results=results)
 
     elif request.method == 'DELETE' :
         try :
@@ -201,11 +214,16 @@ def project_slug(slug) :
 @app.route('/write', methods=['GET', 'POST'])
 def write() :
     if request.method == 'GET' :
-        return render_template('write.html')
+        if 'login' in session :
+            login = True
+        else :
+            login = False
+        return render_template('write.html', login=login)
 
     elif request.method == 'POST' :
         try :
             values = request.form
+            print(values)
             writing = {
                 'title': values['title'],
                 'description': values['description'],
@@ -223,5 +241,5 @@ def write() :
 
 
         except Exception as exception :
-            print(exception)
+            print(f'*** error - {exception}')
             return 'failed'

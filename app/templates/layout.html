@@ -28,13 +28,32 @@
     <div class="container">
 
         <div class="media">
-            <a href=""><img class="mr-3" src="../../static/cEdu_logo.png" alt="Generic placeholder image" width="150"></a>
+            <a href="/"><img class="mr-3" src="../../static/cEdu_logo.png" alt="Generic placeholder image"
+                    width="150"></a>
             <div class="media-body">
 
                 <div>
+                    {% if login %}
+                    <button type="button" id="logout_btn" class="btn btn-primary" style="margin: 1rem 0">
+                        로그아웃
+                    </button>
+                    <script>
+                        $(document).ready(function() {
+                            $("#logout_btn").click(function() {
+                                $.ajax({
+                                    type: "DELETE",
+                                    url: "/loginout",
+                                    success: function() { location.reload(); },
+                                    error: function(req, status, error) {
+                                        alert(error);
+                                    }
+                                })
+                            })
+                        })
+                    </script>
+                    {% else %}
                     <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong"
-                        style="margin: 1rem 0">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong" style="margin: 1rem 0">
                         로그인
                     </button>
                     <!-- Modal -->
@@ -43,48 +62,78 @@
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                                    <h5 class="modal-title" id="exampleModalLongTitle">로그인</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
-                                <div class="modal-body">
-                                    ...
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Save changes</button>
-                                </div>
+                                <form action="/loginout" method="POST">
+                                    <div class="modal-body">
+                                        <div class="form-group row">
+                                            <label for="staticEmail" class="col-sm-3 col-form-label">이메일</label>
+                                            <div class="col-sm-9">
+                                                <input name="email" type="text" requried class="form-control"
+                                                    id="staticEmail" placeholder="email@example.com">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="inputPassword" class="col-sm-3 col-form-label">비밀번호</label>
+                                            <div class="col-sm-9">
+                                                <input name="password" type="password" requried class="form-control"
+                                                    id="inputPassword" placeholder="Password">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+                                        <button type="submit" class="btn btn-primary">완료</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
 
                     <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModalLong"
-                        style="margin: 1rem 0">
+                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModalCenter">
                         회원가입
                     </button>
                     <!-- Modal -->
-                    <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog"
-                        aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
+                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                                    <h5 class="modal-title" id="exampleModalLongTitle">회원가입</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
-                                <div class="modal-body">
-                                    ...
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Save changes</button>
-                                </div>
+                                <form action="/users" method="POST">
+                                    <div class="modal-body">
+                                        <div class="form-group row">
+                                            <label for="email" class="col-sm-3 col-form-label">이메일</label>
+                                            <div class="col-sm-9">
+                                                <input name="email" type="text" requried class="form-control"
+                                                    id="email" placeholder="email@example.com">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="password" class="col-sm-3 col-form-label">비밀번호</label>
+                                            <div class="col-sm-9">
+                                                <input name="password" type="password" requried class="form-control"
+                                                    id="password" placeholder="Password">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+                                        <button type="submit" class="btn btn-primary">완료</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
+                    {% endif %}
                 </div>
 
                 <!-- menu -->
