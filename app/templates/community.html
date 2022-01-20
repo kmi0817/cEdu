@@ -1,12 +1,19 @@
 {% extends 'layout.html' %}
 {% block content %}
 <div style="border:1px solid rgba(0,0,0,.125); border-radius: 0.25rem; padding: 1rem; margin: 1rem 0;">
-    <nav class="navbar navbar-light bg-light justify-content-between">
-        <a class="navbar-brand">커뮤니티</a>
-        <form class="form-inline">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">검색</button>
-        </form>
+    <nav class="navbar navbar-light bg-light d-flex">
+        <div class="mr-auto p-2">
+            <a class="navbar-brand">프로젝트</a>
+        </div>
+        <div class="p-2">
+            <form class="form-inline">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">검색</button>
+            </form>
+        </div>
+        <div class="p-2">
+            <button type="button" class="btn btn-secondary" onclick="location.href='/write'">작성</button>
+        </div>
     </nav>
     <br>
     {% for index, community in communities.items() %}
@@ -61,16 +68,22 @@
         </li>
     </ul>
 </nav>
-<button type="button" class="btn btn-secondary" onclick="location.href='/write'">작성</button>
 </div>
 
 <div style="border:1px solid rgba(0,0,0,.125); border-radius: 0.25rem; padding: 1rem; margin: 1rem 0;">
-    <nav class="navbar navbar-light bg-light justify-content-between">
-        <a class="navbar-brand">프로젝트</a>
-        <form class="form-inline">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">검색</button>
-        </form>
+    <nav class="navbar navbar-light bg-light d-flex">
+        <div class="mr-auto p-2">
+            <a class="navbar-brand">프로젝트</a>
+        </div>
+        <div class="p-2">
+            <form class="form-inline">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">검색</button>
+            </form>
+        </div>
+        <div class="p-2">
+            <button type="button" class="btn btn-secondary" onclick="location.href='/write'">작성</button>
+        </div>
     </nav>
     <br>
     {% for index, project in projects.items() %}
@@ -125,6 +138,5 @@
         </li>
     </ul>
 </nav>
-<button type="button" class="btn btn-secondary" onclick="location.href='/write'">작성</button>
 </div>
 {% endblock %}

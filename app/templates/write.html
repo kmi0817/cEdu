@@ -23,8 +23,10 @@
         <input type="file" class="custom-file-input" id="customFile">
     </div>
     <br><br>
-    <button type="button" class="btn btn-outline-secondary" onclick="history.go(-1)">취소</button>
-    <button type="submit" class="btn btn-outline-secondary">완료</button>
-    <input type="hidden" name="writer" value={{ login }}>
+    <div class="d-flex justify-content-between">
+        <button type="button" class="btn btn-outline-secondary" onclick="history.go(-1)">취소</button>
+        <button type="submit" class="btn btn-secondary">완료</button>
+        <input type="hidden" name="writer" value={{ login }}>
+    </div>
 </form>
 {% endblock %}

@@ -8,9 +8,19 @@
             {{ results.created }}
         </div>
         <p class="card-text">{{ results.description }}</p>
-        <button type="button" class="btn btn-info" onclick="location.href='/community'">커뮤니티로 이동</button>
-        <button id="update" class="btn btn-primary" onclick="location.href='/edit/{{ results._id }}'">수정</button>
-        <button id="delete" class="btn btn-danger">삭제</button>
+        <hr>
+        <div class="d-flex">
+            <div class="mr-auto p-2">
+                <button type="button" class="btn btn-info" onclick="location.href='/community'">커뮤니티로 이동</button>
+            </div>
+            <div class="p-2">
+                <button id="update" class="btn btn-primary"
+                    onclick="location.href='/edit/{{ results._id }}'">수정</button>
+            </div>
+            <div class="p-2">
+                <button id="delete" class="btn btn-danger">삭제</button>
+            </div>
+        </div>
     </div>
 </div>
 <script>
