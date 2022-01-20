@@ -21,11 +21,14 @@ pip install python-slugify
 
 **3. To do**
 
-- [ ] 카테고리: 커뮤니티 글 삭제 고치기
-- [ ] 커뮤니티에서 description 넘치는 것 고치기
-- [ ] 글 수정 기능 추가
-- [ ] 회원가입 수정
-- [ ] 로그인 수정
+- [X] 카테고리: 커뮤니티 글 삭제 고치기
+- [X] 커뮤니티에서 description 넘치는 것 고치기
+- [X] 글 수정 기능 추가
+- [X] 회원가입 수정
+- [X] 로그인 수정
+- [ ] 글 작성 시 이미지 첨부
+- [ ] 게시글 댓글
+- [ ] 회원 정보 수정 및 탈퇴
 
 **4. Reference**
 - MongoDB install (MAC) : https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/
