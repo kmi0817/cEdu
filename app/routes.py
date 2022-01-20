@@ -143,7 +143,7 @@ def write() :
             login = session['login']
         else :
             login = False
-        return render_template('write.html', login=login, results=[])
+        return render_template('write.html', login=login)
 
     elif request.method == 'POST' :
         values = request.form
@@ -168,8 +168,8 @@ def write() :
             print(f'*** error - {exception}')
             return 'failed'
 
-@app.route('/write/<id>', methods=['GET', 'POST'])
-def write_slug(id) :
+@app.route('/edit/<id>', methods=['GET', 'POST'])
+def edit_slug(id) :
     if request.method == 'GET' :
         if 'login' in session :
             login = session['login']
@@ -179,4 +179,27 @@ def write_slug(id) :
         print(f'*** id: {id}')
         results = db.communities.find_one({ '_id': ObjectId(id) })
         print(results)
-        return render_template('write.html', login=login, results=results)
+        return render_template('edit.html', login=login, results=results)
+
+    elif request.method == 'POST' :
+        values = request.form
+        print(values)
+        writing = {
+            'title': values['title'],
+            'description': values['description'],
+            'slug': slugify(values['title']),
+            'category': values['category'],
+            'created': datetime.now(),
+            'writer': values['writer']
+        }
+
+        try :
+            db.communities.find_one_and_update({ '_id': ObjectId(id) }, {"$set": writing}) # update
+            if values['category'] == 'community' :
+                return redirect(url_for('community_slug', slug=slugify(values['title'])))
+            elif values['category'] == 'project' :
+                return redirect(url_for('project_slug', slug=slugify(values['title'])))
+
+        except Exception as exception :
+            print(f'*** error - {exception}')
+            return 'failed'

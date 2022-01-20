@@ -1,22 +1,28 @@
 {% extends 'layout.html' %}
 {% block content %}
-<form action="/write" method="POST">
+<form action="/edit/{{ results._id }}" method="POST">
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="title">제목</label>
-            <input type="text" name="title" class="form-control" id="title" placeholder="제목">
+            <input type="text" name="title" class="form-control" id="title" placeholder="제목"
+                value="{{ results.title }}">
         </div>
         <div class="form-group col-md-6">
             <label for="category">카테고리</label>
             <select name="category" class="form-control" id="category">
-                <option value="community">커뮤니티</option>
+                {% if results.category == 'community' %}
+                <option selected value="community">커뮤니티</option>
                 <option value="project">프로젝트</option>
+                {% else %}
+                <option value="community">커뮤니티</option>
+                <option selected value="project">프로젝트</option>
+                {% endif %}
             </select>
         </div>
     </div>
     <div class="form-group">
         <label for="description">내용</label>
-        <textarea name="description" class="form-control" id="description" rows="8"></textarea>
+        <textarea name="description" class="form-control" id="description" rows="8">{{ results.description }}</textarea>
     </div>
     <div class="form-group custom-file">
         <label class="custom-file-label" for="customFile">첨부 파일...</label>
@@ -24,7 +30,7 @@
     </div>
     <br><br>
     <button type="button" class="btn btn-outline-secondary" onclick="history.go(-1)">취소</button>
-    <button type="submit" class="btn btn-outline-secondary">완료</button>
+    <button type="submit" id="submit_btn" class="btn btn-outline-secondary">완료</button>
     <input type="hidden" name="writer" value={{ login }}>
 </form>
 {% endblock %}
