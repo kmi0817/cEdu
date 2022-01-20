@@ -55,7 +55,7 @@ def users() :
         # check if email is duplicated
         if db.users.find_one({ 'email': values['email'] }) :
             print(db.users.find_one({ 'email': values['email'] }))
-            return 'duplicated'
+            return '<script>alert("중복된 이메일입니다.");history.go(-1);</script>'
 
         # add a new user
         user = {
