@@ -20,7 +20,7 @@ except :
 @app.route('/')
 def index() :
     if 'login' in session :
-        login = True
+        login = session['login']
     else :
         login = False
     return render_template('index.html', login=login)
@@ -79,7 +79,7 @@ def users() :
 @app.route('/community')
 def community() :
     if 'login' in session :
-        login = True
+        login = session['login']
     else :
         login = False
 
@@ -103,7 +103,7 @@ def community() :
 def community_slug(slug) :
     if request.method == 'GET' :
         if 'login' in session :
-            login = True
+            login = session['login']
         else :
             login = False
 
@@ -126,7 +126,7 @@ def community_slug(slug) :
 def project_slug(slug) :
     if request.method == 'GET' :
         if 'login' in session :
-            login = True
+            login = session['login']
         else :
             login = False
         posting = db.communities.find_one({ 'slug': slug, 'category': 'project' })
@@ -216,8 +216,6 @@ def edit_slug(id) :
 def comment() :
     if request.method == 'POST' :
         values = request.form
-        print(values)
-
         comment = {
             'comment': values['comment'],
             'created': datetime.now(),
@@ -226,7 +224,7 @@ def comment() :
         }
 
         try :
-            db.comments.insert_one(comment) # update
+            db.comments.insert_one(comment) # insert
             if values['category'] == 'community' :
                 return redirect(url_for('community_slug', slug=slugify(values['slug'])))
             elif values['category'] == 'project' :
