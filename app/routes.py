@@ -107,8 +107,10 @@ def community_slug(slug) :
         else :
             login = False
 
-        results = db.communities.find_one({ 'slug': slug, 'category': 'community' })
-        return render_template('show_slug.html', login=login, results=results)
+        posting = db.communities.find_one({ 'slug': slug, 'category': 'community' })
+        comments = db.comments.find_one({ 'posting_id': str(posting['_id']) })
+        print(comments)
+        return render_template('show_slug.html', login=login, posting=posting, comments=comments)
 
     elif request.method == 'DELETE' :
         try :
@@ -203,3 +205,23 @@ def edit_slug(id) :
         except Exception as exception :
             print(f'*** error - {exception}')
             return 'failed'
+
+@app.route('/comment', methods=['POST'])
+def comment() :
+    if request.method == 'POST' :
+        values = request.form
+        print(values)
+
+        comment = {
+            'comment': values['comment'],
+            'created': datetime.now(),
+            'writer': values['writer'],
+            'posting_id': values['posting_id']
+        }
+
+        try :
+            db.comments.insert_one(comment) # update
+            return redirect(url_for('community_slug', slug=slugify(values['slug'])))
+        except Exception as exception :
+            print(f'*** error - {exception}')
+            return 'falied'

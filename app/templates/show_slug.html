@@ -1,13 +1,13 @@
 {% extends 'layout.html' %}
 {% block content %}
 <div class="card">
-    <h5 class="card-header">{{ results.category }}</h5>
+    <h5 class="card-header">{{ posting.category }}</h5>
     <div class="card-body">
-        <h5 class="card-title">{{ results.title }} </h5>
+        <h5 class="card-title">{{ posting.title }} </h5>
         <div class="text-muted mb-1">
-            {{ results.created }}
+            {{ posting.created }}
         </div>
-        <p class="card-text">{{ results.description }}</p>
+        <p class="card-text">{{ posting.description }}</p>
         <hr>
         <div class="d-flex">
             <div class="mr-auto p-2">
@@ -15,7 +15,7 @@
             </div>
             <div class="p-2">
                 <button id="update" class="btn btn-primary"
-                    onclick="location.href='/edit/{{ results._id }}'">수정</button>
+                    onclick="location.href='/edit/{{ posting._id }}'">수정</button>
             </div>
             <div class="p-2">
                 <button id="delete" class="btn btn-danger">삭제</button>
@@ -28,7 +28,7 @@
         $("#delete").click(function () {
             $.ajax({
                 type: "DELETE",
-                url: "/{{results.category}}/{{results._id}}",
+                url: "/{{posting.category}}/{{posting._id}}",
                 success: function () { location.href = "/community"; },
                 error: function (req, status, error) {
                     alert(error);
@@ -46,29 +46,33 @@
     <div class="card bg-light">
         <div class="card-body">
             <!-- Comment form-->
-            <form class="mb-4">
+            <form class="mb-4" action="/comment" method="POST">
                 <div class="form-group">
-                    <label for="description">댓글</label>
-                    <textarea name="description" class="form-control" id="description" rows="3"></textarea>
+                    <label for="comment">댓글</label>
+                    <textarea name="comment" class="form-control" id="comment" rows="3"></textarea>
                 </div>
                 <div class="d-flex justify-content-end">
-                    <buttom type="submit" class="btn btn-secondary justify-content-center">완료</buttom>
+                    <button type="submit" class="btn btn-secondary justify-content-center">완료</button>
+                    <input type="hidden" name="writer" value={{ login }}>
+                    <input type="hidden" name="posting_id" value={{ posting._id }}>
+                    <input type="hidden" name="slug" value={{ posting.slug }}>
                 </div>
             </form>
 
             <hr>
 
             <!-- Single comment-->
+            {% for comment in comments %}
             <div class="d-flex">
                 <div class="flex-shrink-0" style="margin-right: 0.75rem">
                     <img class="rounded-circle" src="../static/img/default.png" alt="..." width=50>
                 </div>
                 <div class="ms-3">
-                    <div class="fw-bold">Commenter Name</div>
-                    When I look at the universe and all the ways the universe wants to kill us, I find it hard to
-                    reconcile that with statements of beneficence.
+                    <div class="fw-bold">{{ comment.writer }}</div>
+                    {{ comment.comment }}
                 </div>
             </div>
+            {% endfor %}
         </div>
     </div>
 </section>
