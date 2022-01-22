@@ -56,12 +56,14 @@
                     <input type="hidden" name="writer" value={{ login }}>
                     <input type="hidden" name="posting_id" value={{ posting._id }}>
                     <input type="hidden" name="slug" value={{ posting.slug }}>
+                    <input type="hidden" name="category" value={{ posting.category }}>
                 </div>
             </form>
 
             <hr>
 
             <!-- Single comment-->
+            {% if comments %}
             {% for comment in comments %}
             <div class="d-flex">
                 <div class="flex-shrink-0" style="margin-right: 0.75rem">
@@ -73,6 +75,7 @@
                 </div>
             </div>
             {% endfor %}
+            {% endif %}
         </div>
     </div>
 </section>

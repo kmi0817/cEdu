@@ -108,9 +108,11 @@ def community_slug(slug) :
             login = False
 
         posting = db.communities.find_one({ 'slug': slug, 'category': 'community' })
-        comments = db.comments.find_one({ 'posting_id': str(posting['_id']) })
-        print(comments)
-        return render_template('show_slug.html', login=login, posting=posting, comments=comments)
+        comments = db.comments.find({ 'posting_id': str(posting['_id']) })
+        if comments is None :
+            return render_template('show_slug.html', login=login, posting=posting)
+        else :
+            return render_template('show_slug.html', login=login, posting=posting, comments=comments)
 
     elif request.method == 'DELETE' :
         try :
@@ -127,8 +129,12 @@ def project_slug(slug) :
             login = True
         else :
             login = False
-        results = db.communities.find_one({ 'slug': slug, 'category': 'project' })
-        return render_template('show_slug.html', login=login, results=results)
+        posting = db.communities.find_one({ 'slug': slug, 'category': 'project' })
+        comments = db.comments.find({ 'posting_id': str(posting['_id']) })
+        if comments is None :
+            return render_template('show_slug.html', login=login, posting=posting)
+        else :
+            return render_template('show_slug.html', login=login, posting=posting, comments=comments)
 
     elif request.method == 'DELETE' :
         try :
@@ -221,7 +227,11 @@ def comment() :
 
         try :
             db.comments.insert_one(comment) # update
-            return redirect(url_for('community_slug', slug=slugify(values['slug'])))
+            if values['category'] == 'community' :
+                return redirect(url_for('community_slug', slug=slugify(values['slug'])))
+            elif values['category'] == 'project' :
+                return redirect(url_for('project_slug', slug=slugify(values['slug'])))
+
         except Exception as exception :
             print(f'*** error - {exception}')
             return 'falied'
