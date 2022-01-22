@@ -65,7 +65,7 @@
             <!-- Single comment-->
             {% if comments %}
             {% for comment in comments %}
-            <div class="d-flex" style="margin: 1rem 0">
+            <div class="d-flex" style="margin-top: 1rem">
                 <div class="flex-shrink-0" style="margin-right: 0.75rem">
                     <img class="rounded-circle" src="../static/img/default.png" alt="..." width=50>
                 </div>
@@ -74,6 +74,14 @@
                     {{ comment.comment }}
                 </div>
             </div>
+            {% if login == comment.writer %}
+            <form class="d-flex justify-content-end">
+                <!-- <button class="btn btn-sm btn-outline-primary" type="button">수정</button> -->
+                <button class="btn btn-sm btn-outline-danger" type="button">삭제</button>
+                <input type="hidden" name="comment_id" value={{ comment._id }}>
+                <input type="hidden" name="writer" value={{ comment.writer }}>
+            </form>
+            {% endif %}
             {% endfor %}
             {% endif %}
         </div>
