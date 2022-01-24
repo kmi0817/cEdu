@@ -233,3 +233,14 @@ def comment() :
         except Exception as exception :
             print(f'*** error - {exception}')
             return 'falied'
+
+@app.route('/comment/<id>', methods=['POST'])
+def comment_id(id) :
+    if request.method == 'POST' :
+        try :
+            db.comments.delete_one({ '_id': ObjectId(id) })
+            return redirect(url_for('community_slug', slug=slugify(request.form['posting_slug'])))
+
+        except Exception as exception :
+            print(f'*** error - {exception}')
+            return 'falied'

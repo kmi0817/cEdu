@@ -75,11 +75,10 @@
                 </div>
             </div>
             {% if login == comment.writer %}
-            <form class="d-flex justify-content-end">
+            <form class="d-flex justify-content-end" action="/comment/{{ comment._id }}" method="POST" onsubmit="if(!confirm('삭제하시겠습니까?')){return false;}">
                 <!-- <button class="btn btn-sm btn-outline-primary" type="button">수정</button> -->
-                <button class="btn btn-sm btn-outline-danger" type="button">삭제</button>
-                <input type="hidden" name="comment_id" value={{ comment._id }}>
-                <input type="hidden" name="writer" value={{ comment.writer }}>
+                <button class="btn btn-sm btn-outline-danger" type="submit">삭제</button>
+                <input type="hidden" name="posting_slug" value="{{ posting.slug }}">
             </form>
             {% endif %}
             {% endfor %}
