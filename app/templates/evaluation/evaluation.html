@@ -1,721 +1,713 @@
 {% extends 'layout.html' %}
 {% block content %}
-<div clas="wrap">
-    <ul class="nav nav-tabs" id="myList" role="tablist">
-        <li class="nav-item">
-            <a class="nav-link active" data-toggle="list" href="#list-tech" role="tab">기술성</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" data-toggle="list" href="#list-right" role="tab">권리성</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" data-toggle="list" href="#list-marketability" role="tab">시장성</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" data-toggle="list" href="#list-business" role="tab">사업성</a>
-        </li>
-    </ul>
-    <div class="tab-content" id="nav-tabContent">
-        <div class="tab-pane fade show active" id="list-tech" role="tabpanel" aria-labelledby="list-home-list">
-            <div class="row" style="padding: 0 15px">
-                <div class="card col-md-4" style="border-top: none">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-center">
-                            <h5 class="card-title" style="margin-bottom: 0">기술 환경 분석</h5>
-                        </div>
-                        <hr>
-                        <p class="card-text">
-                        <h6 class="card-subtitle mb-2 text-muted">주요 평가내용</h6>
-
-                        <ul style="padding: 0">
-                            <li>국내외 기술 동향 및 업체 현황</li>
-                            <li>기술의 Life-Cycle</li>
-                            <li>기술발전 방향</li>
-                        </ul>
-                        <br>
-                        <h6 class="card-subtitle mb-2 text-muted">세부 분석내용 및 방법</h6>
-
-                        <ul style="padding: 0">
-                            <li>대상기술이 포함된 기술군의 개발 동향 및 전망 조사</li>
-                            <li>국내외 기술개발 동향 및 개발추세. 국내외 업체 현황. 기술개발 환경변화 요인(기회/위협요인 등) 기술발전 방향. Life-Cycle 등을 조사</li>
-                            <li>대체기술 출현 가능성과 유사 경쟁기술 현황 조사</li>
-                        </ul>
-                        </p>
+<ul class="nav nav-tabs" id="myList" role="tablist">
+    <li class="nav-item">
+        <a class="nav-link active" data-toggle="list" href="#list-tech" role="tab">기술성</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" data-toggle="list" href="#list-right" role="tab">권리성</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" data-toggle="list" href="#list-marketability" role="tab">시장성</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" data-toggle="list" href="#list-business" role="tab">사업성</a>
+    </li>
+</ul>
+<div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active" id="list-tech" role="tabpanel" aria-labelledby="list-home-list">
+        <div class="row" style="padding: 0 15px">
+            <div class="card col-md-4" style="border-top: none">
+                <div class="card-body">
+                    <div class="d-flex justify-content-center">
+                        <h5 class="card-title" style="margin-bottom: 0">기술 환경 분석</h5>
                     </div>
-                </div>
-                <div class="card col-md-4" style="border-top: none">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-center">
-                            <h5 class="card-title" style="margin-bottom: 0">기술의 유용성 분석</h5>
-                        </div>
-                        <hr>
-                        <p class="card-text">
-                        <h6 class="card-subtitle mb-2 text-muted">주요 평가내용</h6>
+                    <hr>
+                    <p class="card-text">
+                    <h6 class="card-subtitle mb-2 text-muted">주요 평가내용</h6>
 
-                        <ul style="padding: 0">
-                            <li>기술 활용성</li>
-                            <li>기술 파급성 및 확장성</li>
-                            <li>산업적 파급효과</li>
-                        </ul>
-                        <br>
-                        <h6 class="card-subtitle mb-2 text-muted">세부 분석내용 및 방법</h6>
+                    <ul style="padding: 0">
+                        <li>국내외 기술 동향 및 업체 현황</li>
+                        <li>기술의 Life-Cycle</li>
+                        <li>기술발전 방향</li>
+                    </ul>
+                    <br>
+                    <h6 class="card-subtitle mb-2 text-muted">세부 분석내용 및 방법</h6>
 
-                        <ul style="padding: 0">
-                            <li>대상기술 사용자의 활용성</li>
-                            <li>대상기술의 타제품, 타기술 분야로의 확장 적용 가능성 분석</li>
-                            <li>기술의 속성 차이를 고려하여 분석하고, 산업적 파급효과 등 파악</li>
-                        </ul>
-                        </p>
-                    </div>
-                </div>
-                <div class="card col-md-4" style="border-top: none">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-center">
-                            <h5 class="card-title" style="margin-bottom: 0">기술의 경쟁력 분석</h5>
-                        </div>
-                        <hr>
-                        <p class="card-text">
-                        <h6 class="card-subtitle mb-2 text-muted">주요 평가내용</h6>
-
-                        <ul style="padding: 0">
-                            <li>기술 우월성 및 차별성</li>
-                            <li>대체가능성 및 모방 난이도</li>
-                        </ul>
-                        <br>
-                        <h6 class="card-subtitle mb-2 text-muted">세부 분석내용 및 방법</h6>
-
-                        <ul style="padding: 0">
-                            <li>기존 기술 대비 대상기술의 기술경쟁강도를 분석하여 비교우위 요소를 파악</li>
-                            <li>대상기술의 우월성, 차별성, 대체가능성, 모방난이도 등을 근거로 기술수준 판단</li>
-                        </ul>
-                        </p>
-                    </div>
+                    <ul style="padding: 0">
+                        <li>대상기술이 포함된 기술군의 개발 동향 및 전망 조사</li>
+                        <li>국내외 기술개발 동향 및 개발추세. 국내외 업체 현황. 기술개발 환경변화 요인(기회/위협요인 등) 기술발전 방향. Life-Cycle 등을 조사</li>
+                        <li>대체기술 출현 가능성과 유사 경쟁기술 현황 조사</li>
+                    </ul>
+                    </p>
                 </div>
             </div>
-            <div class="card" style="padding: 0 15px;">
+            <div class="card col-md-4" style="border-top: none">
                 <div class="card-body">
-                    <h5 class="card-title d-flex justify-content-center">관련 평가항목</h5>
+                    <div class="d-flex justify-content-center">
+                        <h5 class="card-title" style="margin-bottom: 0">기술의 유용성 분석</h5>
+                    </div>
                     <hr>
-                    <form>
-                        <div class="form-group row">
-                            <label class="col-sm-4 col-form-label">기술경쟁강도</label>
-                            <div class="col-sm-6">
-                                <input type="number"class="form-control form1" requried>
-                            </div>
-                            <div class="col-sm-2 text-muted d-flex justify-content-center">
-                                (5점 만점)
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-4 col-form-label">우월성</label>
-                            <div class="col-sm-6">
-                                <input type="number" class="form-control form1" requried>
-                            </div>
-                            <div class="col-sm-2 text-muted d-flex justify-content-center">
-                                (5점 만점)
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-4 col-form-label">차별성</label>
-                            <div class="col-sm-6">
-                                <input type="number" class="form-control form1" requried>
-                            </div>
-                            <div class="col-sm-2 text-muted d-flex justify-content-center">
-                                (5점 만점)
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-4 col-form-label">대체가능성</label>
-                            <div class="col-sm-6">
-                                <input type="number" class="form-control form1" requried>
-                            </div>
-                            <div class="col-sm-2 text-muted d-flex justify-content-center">
-                                (5점 만점)
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-4 col-form-label">모방난이도</label>
-                            <div class="col-sm-6">
-                                <input type="number" class="form-control form1" requried>
-                            </div>
-                            <div class="col-sm-2 text-muted d-flex justify-content-center">
-                                (5점 만점)
-                            </div>
-                        </div>
-                        <div class="row d-flex justify-content-end">
-                            <input id="sum1" class="form-control col-md-10" type="number" placeholder="Sum" readonly>
-                            <button type="button" id="btn1" class="btn btn-outline-primary col-md-2">총합 구하기</button>
-                            <script>
-                                $(document).ready(function() {
-                                    $("#btn1").click(function() {
-                                        const values = document.getElementsByClassName("form1");
-                                        let total = 0;
-                                        let flag = true;
-                                        for (var i = 0; i < values.length; i++) {
-                                            let input_num =  Number(values[i].value);
-                                            if (input_num >= 1 && input_num <= 5)
-                                                total += input_num;
-                                            else {
-                                                alert("입력 범위를 확인하세요.");
-                                                flag = false;
-                                                break;
-                                            }
-                                        }
-                                        if (flag)
-                                            document.getElementById("sum1").value = total
-                                    });
-                                })
-                            </script>
-                        </div>
-                    </form>
+                    <p class="card-text">
+                    <h6 class="card-subtitle mb-2 text-muted">주요 평가내용</h6>
+
+                    <ul style="padding: 0">
+                        <li>기술 활용성</li>
+                        <li>기술 파급성 및 확장성</li>
+                        <li>산업적 파급효과</li>
+                    </ul>
+                    <br>
+                    <h6 class="card-subtitle mb-2 text-muted">세부 분석내용 및 방법</h6>
+
+                    <ul style="padding: 0">
+                        <li>대상기술 사용자의 활용성</li>
+                        <li>대상기술의 타제품, 타기술 분야로의 확장 적용 가능성 분석</li>
+                        <li>기술의 속성 차이를 고려하여 분석하고, 산업적 파급효과 등 파악</li>
+                    </ul>
+                    </p>
+                </div>
+            </div>
+            <div class="card col-md-4" style="border-top: none">
+                <div class="card-body">
+                    <div class="d-flex justify-content-center">
+                        <h5 class="card-title" style="margin-bottom: 0">기술의 경쟁력 분석</h5>
+                    </div>
+                    <hr>
+                    <p class="card-text">
+                    <h6 class="card-subtitle mb-2 text-muted">주요 평가내용</h6>
+
+                    <ul style="padding: 0">
+                        <li>기술 우월성 및 차별성</li>
+                        <li>대체가능성 및 모방 난이도</li>
+                    </ul>
+                    <br>
+                    <h6 class="card-subtitle mb-2 text-muted">세부 분석내용 및 방법</h6>
+
+                    <ul style="padding: 0">
+                        <li>기존 기술 대비 대상기술의 기술경쟁강도를 분석하여 비교우위 요소를 파악</li>
+                        <li>대상기술의 우월성, 차별성, 대체가능성, 모방난이도 등을 근거로 기술수준 판단</li>
+                    </ul>
+                    </p>
                 </div>
             </div>
         </div>
-        <div class="tab-pane fade" id="list-right" role="tabpanel" aria-labelledby="list-profile-list">
-            <div class="row" style="padding: 0 15px">
-                <div class="card col-md-4" style="border-top: none">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-center">
-                            <h5 class="card-title" style="margin-bottom: 0">권리 안전성</h5>
+        <div class="card" style="padding: 0 15px;">
+            <div class="card-body">
+                <h5 class="card-title d-flex justify-content-center">관련 평가항목</h5>
+                <hr>
+                <form>
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">기술경쟁강도</label>
+                        <div class="col-sm-6">
+                            <input type="number" class="form-control form1" requried>
                         </div>
-                        <hr>
-                        <p class="card-text">
-                        <h6 class="card-subtitle mb-2 text-muted">주요 평가내용</h6>
-
-                        <ul style="padding: 0">
-                            <li>청구범위 발명 내용 확정</li>
-                            <li>선행기술조사</li>
-                            <li>신규성, 진보성 등에 의한 무효 가능성 및 등록가능성</li>
-                        </ul>
-                        <br>
-                        <h6 class="card-subtitle mb-2 text-muted">세부 분석내용 및 방법</h6>
-
-                        <ul style="padding: 0">
-                            <li>특허 청구항과 명세서에 기재된 사항을 바탕으로 발명 내용 확정</li>
-                            <li>섡행기술 대비, 대상특허의 신규성, 진보성 위반에 따른 무효가능성 의견 제시</li>
-                            <li>특허출원포대, 명세서 기재불비 등을 조사하여 기타 사유로 인한 무효가능성도 함께 판단</li>
-                        </ul>
-                        </p>
-                    </div>
-                </div>
-                <div class="card col-md-4" style="border-top: none">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-center">
-                            <h5 class="card-title" style="margin-bottom: 0">권리범위광협</h5>
+                        <div class="col-sm-2 text-muted d-flex justify-content-center">
+                            (5점 만점)
                         </div>
-                        <hr>
-                        <p class="card-text">
-                        <h6 class="card-subtitle mb-2 text-muted">주요 평가내용</h6>
-
-                        <ul style="padding: 0">
-                            <li>선행기술 대비 차별성</li>
-                            <li>권리보호강도</li>
-                            <li>회피설계 가능성</li>
-                        </ul>
-                        <br>
-                        <h6 class="card-subtitle mb-2 text-muted">세부 분석내용 및 방법</h6>
-
-                        <ul style="padding: 0">
-                            <li>선행기술 대비 차별적인 특징이 무엇인지를 파악하고, 동 특징이 적절한 권리 범위로 설정되어 있는지와 대상기술 제품을 실시하는 경우 선행특허권을 침해할 우려는
-                                없는지에 대한 의견 제시</li>
-                            <li>청구항 기재 구성요소 개수와 불필요한 구성의 부가여부를 판단하고, 구성요소를 표현한 용어 선택의 적절성과 불요한 한정적 표현의 사용 여부 판단</li>
-                            <li>청구항 구성요소와 표현을 바탕으로 경쟁자의 용이한 회피설계 가능성을 판단하고, 다수 특허권에 대한 평가 시 회피설계 차단을 위한 적절한 포트폴리오 구축 여부
-                                판단</li>
-                        </ul>
-                        </p>
                     </div>
-                </div>
-                <div class="card col-md-4" style="border-top: none">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-center">
-                            <h5 class="card-title" style="margin-bottom: 0">제품적요여부</h5>
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">우월성</label>
+                        <div class="col-sm-6">
+                            <input type="number" class="form-control form1" requried>
                         </div>
-                        <hr>
-                        <p class="card-text">
-                        <h6 class="card-subtitle mb-2 text-muted">주요 평가내용</h6>
-
-                        <ul style="padding: 0">
-                            <li>청구항구성요소와 제품의 대비</li>
-                            <li>특허기술의 비중</li>
-                        </ul>
-                        <br>
-                        <h6 class="card-subtitle mb-2 text-muted">세부 분석내용 및 방법</h6>
-
-                        <ul style="padding: 0">
-                            <li>대상 특허가 제품에 실제 적용되었는지를 구성요소 별로 대비하여 판단</li>
-                            <li>제품 전체에서 대상 특허가 차지하는 비중 파악</li>
-                            <li>대상 특허의 사업과의 연관성 검토</li>
-                        </ul>
-                        </p>
+                        <div class="col-sm-2 text-muted d-flex justify-content-center">
+                            (5점 만점)
+                        </div>
                     </div>
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">차별성</label>
+                        <div class="col-sm-6">
+                            <input type="number" class="form-control form1" requried>
+                        </div>
+                        <div class="col-sm-2 text-muted d-flex justify-content-center">
+                            (5점 만점)
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">대체가능성</label>
+                        <div class="col-sm-6">
+                            <input type="number" class="form-control form1" requried>
+                        </div>
+                        <div class="col-sm-2 text-muted d-flex justify-content-center">
+                            (5점 만점)
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">모방난이도</label>
+                        <div class="col-sm-6">
+                            <input type="number" class="form-control form1" requried>
+                        </div>
+                        <div class="col-sm-2 text-muted d-flex justify-content-center">
+                            (5점 만점)
+                        </div>
+                    </div>
+                    <div class="row d-flex justify-content-end">
+                        <input id="sum1" class="form-control col-md-10" type="number" placeholder="Sum" readonly>
+                        <button type="button" id="btn1" class="btn btn-outline-primary col-md-2">총합 구하기</button>
+                        <script>
+                            $(document).ready(function () {
+                                $("#btn1").click(function () {
+                                    const values = document.getElementsByClassName("form1");
+                                    let total = 0;
+                                    let flag = true;
+                                    for (var i = 0; i < values.length; i++) {
+                                        let input_num = Number(values[i].value);
+                                        if (input_num >= 1 && input_num <= 5)
+                                            total += input_num;
+                                        else {
+                                            alert("입력 범위를 확인하세요.");
+                                            flag = false;
+                                            break;
+                                        }
+                                    }
+                                    if (flag)
+                                        document.getElementById("sum1").value = total
+                                });
+                            })
+                        </script>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="list-right" role="tabpanel" aria-labelledby="list-profile-list">
+        <div class="row" style="padding: 0 15px">
+            <div class="card col-md-4" style="border-top: none">
+                <div class="card-body">
+                    <div class="d-flex justify-content-center">
+                        <h5 class="card-title" style="margin-bottom: 0">권리 안전성</h5>
+                    </div>
+                    <hr>
+                    <p class="card-text">
+                    <h6 class="card-subtitle mb-2 text-muted">주요 평가내용</h6>
+
+                    <ul style="padding: 0">
+                        <li>청구범위 발명 내용 확정</li>
+                        <li>선행기술조사</li>
+                        <li>신규성, 진보성 등에 의한 무효 가능성 및 등록가능성</li>
+                    </ul>
+                    <br>
+                    <h6 class="card-subtitle mb-2 text-muted">세부 분석내용 및 방법</h6>
+
+                    <ul style="padding: 0">
+                        <li>특허 청구항과 명세서에 기재된 사항을 바탕으로 발명 내용 확정</li>
+                        <li>섡행기술 대비, 대상특허의 신규성, 진보성 위반에 따른 무효가능성 의견 제시</li>
+                        <li>특허출원포대, 명세서 기재불비 등을 조사하여 기타 사유로 인한 무효가능성도 함께 판단</li>
+                    </ul>
+                    </p>
                 </div>
             </div>
-            <div class="card" style="padding: 0 15px;">
+            <div class="card col-md-4" style="border-top: none">
                 <div class="card-body">
-                    <h5 class="card-title d-flex justify-content-center">관련 평가항목</h5>
+                    <div class="d-flex justify-content-center">
+                        <h5 class="card-title" style="margin-bottom: 0">권리범위광협</h5>
+                    </div>
                     <hr>
-                    <form>
-                        <div class="form-group row">
-                            <label class="col-sm-4 col-form-label">권리안정성</label>
-                            <div class="col-sm-6">
-                                <input type="number" class="form-control form2" requried>
-                            </div>
-                            <div class="col-sm-2 text-muted d-flex justify-content-center">
-                                (4점 만점)
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-4 col-form-label">권리보호강도</label>
-                            <div class="col-sm-6">
-                                <input type="number" class="form-control form2" requried>
-                            </div>
-                            <div class="col-sm-2 text-muted d-flex justify-content-center">
-                                (4점 만점)
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-4 col-form-label">대상기술제품(서비스) 보호가능성</label>
-                            <div class="col-sm-6">
-                                <input type="number" class="form-control form2" requried>
-                            </div>
-                            <div class="col-sm-2 text-muted d-flex justify-content-center">
-                                (4점 만점)
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-4 col-form-label">국내외 포트폴리오 구축의 적절성</label>
-                            <div class="col-sm-6">
-                                <input type="number" class="form-control form2" requried>
-                            </div>
-                            <div class="col-sm-2 text-muted d-flex justify-content-center">
-                                (3점 만점)
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-4 col-form-label">침해발견 및 입증용이성</label>
-                            <div class="col-sm-6">
-                                <input type="number" class="form-control form2" requried>
-                            </div>
-                            <div class="col-sm-2 text-muted d-flex justify-content-center">
-                                (3점 만점)
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-4 col-form-label">권리행사 제한가능성</label>
-                            <div class="col-sm-6">
-                                <input type="number" class="form-control form2" requried>
-                            </div>
-                            <div class="col-sm-2 text-muted d-flex justify-content-center">
-                                (3점 만점)
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-4 col-form-label">분쟁 및 라이선스활성도</label>
-                            <div class="col-sm-6">
-                                <input type="number" class="form-control form2" requried>
-                            </div>
-                            <div class="col-sm-2 text-muted d-flex justify-content-center">
-                                (3점 만점)
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-4 col-form-label">특허출원 활성도</label>
-                            <div class="col-sm-6">
-                                <input type="number" class="form-control form2" requried>
-                            </div>
-                            <div class="col-sm-2 text-muted d-flex justify-content-center">
-                                (3점 만점)
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-4 col-form-label">회피설계 가능성</label>
-                            <div class="col-sm-6">
-                                <input type="number" class="form-control form2" requried>
-                            </div>
-                            <div class="col-sm-2 text-muted d-flex justify-content-center">
-                                (3점 만점)
-                            </div>
-                        </div>
-                        <div class="row d-flex justify-content-end">
-                            <input id="sum2" class="form-control col-md-10" type="number" placeholder="Sum" readonly>
-                            <button type="button" id="btn2" class="btn btn-outline-primary col-md-2">총합 구하기</button>
-                            <script>
-                                $(document).ready(function() {
-                                    $("#btn2").click(function() {
-                                        const values = document.getElementsByClassName("form2");
-                                        let total = 0;
-                                        let flag = true;
-                                        for (var i = 0; i < values.length; i++) {
-                                            let input_num =  Number(values[i].value);
-                                            if (i <= 2 && input_num >= 1 && input_num <= 4)
-                                                total += input_num;
-                                            else if (input_num >= 1 && input_num <= 3)
-                                                total += input_num;
-                                            else {
-                                                alert("입력 범위를 확인하세요.");
-                                                flag = false;
-                                                break;
-                                            }
-                                        }
-                                        if (flag)
-                                            document.getElementById("sum2").value = total
-                                    });
-                                })
-                            </script>
-                        </div>
-                    </form>
+                    <p class="card-text">
+                    <h6 class="card-subtitle mb-2 text-muted">주요 평가내용</h6>
+
+                    <ul style="padding: 0">
+                        <li>선행기술 대비 차별성</li>
+                        <li>권리보호강도</li>
+                        <li>회피설계 가능성</li>
+                    </ul>
+                    <br>
+                    <h6 class="card-subtitle mb-2 text-muted">세부 분석내용 및 방법</h6>
+
+                    <ul style="padding: 0">
+                        <li>선행기술 대비 차별적인 특징이 무엇인지를 파악하고, 동 특징이 적절한 권리 범위로 설정되어 있는지와 대상기술 제품을 실시하는 경우 선행특허권을 침해할 우려는
+                            없는지에 대한 의견 제시</li>
+                        <li>청구항 기재 구성요소 개수와 불필요한 구성의 부가여부를 판단하고, 구성요소를 표현한 용어 선택의 적절성과 불요한 한정적 표현의 사용 여부 판단</li>
+                        <li>청구항 구성요소와 표현을 바탕으로 경쟁자의 용이한 회피설계 가능성을 판단하고, 다수 특허권에 대한 평가 시 회피설계 차단을 위한 적절한 포트폴리오 구축 여부
+                            판단</li>
+                    </ul>
+                    </p>
+                </div>
+            </div>
+            <div class="card col-md-4" style="border-top: none">
+                <div class="card-body">
+                    <div class="d-flex justify-content-center">
+                        <h5 class="card-title" style="margin-bottom: 0">제품적요여부</h5>
+                    </div>
+                    <hr>
+                    <p class="card-text">
+                    <h6 class="card-subtitle mb-2 text-muted">주요 평가내용</h6>
+
+                    <ul style="padding: 0">
+                        <li>청구항구성요소와 제품의 대비</li>
+                        <li>특허기술의 비중</li>
+                    </ul>
+                    <br>
+                    <h6 class="card-subtitle mb-2 text-muted">세부 분석내용 및 방법</h6>
+
+                    <ul style="padding: 0">
+                        <li>대상 특허가 제품에 실제 적용되었는지를 구성요소 별로 대비하여 판단</li>
+                        <li>제품 전체에서 대상 특허가 차지하는 비중 파악</li>
+                        <li>대상 특허의 사업과의 연관성 검토</li>
+                    </ul>
+                    </p>
                 </div>
             </div>
         </div>
-        <div class="tab-pane fade" id="list-marketability" role="tabpanel" aria-labelledby="list-messages-list">
-            <div class="row" style="padding: 0 15px">
-                <div class="card col-md-3" style="border-top: none">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-center">
-                            <h5 class="card-title" style="margin-bottom: 0">시장개요</h5>
+        <div class="card" style="padding: 0 15px;">
+            <div class="card-body">
+                <h5 class="card-title d-flex justify-content-center">관련 평가항목</h5>
+                <hr>
+                <form>
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">권리안정성</label>
+                        <div class="col-sm-6">
+                            <input type="number" class="form-control form2" requried>
                         </div>
-                        <hr>
-                        <p class="card-text">
-                        <h6 class="card-subtitle mb-2 text-muted">주요 평가내용</h6>
-
-                        <ul style="padding: 0">
-                            <li>대상기술 적용제품의 정의</li>
-                            <li>시장의 정의 및 특성</li>
-                        </ul>
-                        <br>
-                        <h6 class="card-subtitle mb-2 text-muted">세부 분석내용 및 방법</h6>
-
-                        <ul style="padding: 0">
-                            <li>대상기술 적용제품(또는 공정)에 대한 정의</li>
-                            <li>대상기술 적용시장 및 산업에 대한 정의, 범위 및 특징</li>
-                        </ul>
-                        </p>
-                    </div>
-                </div>
-                <div class="card col-md-3" style="border-top: none">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-center">
-                            <h5 class="card-title" style="margin-bottom: 0">시장환경분석</h5>
+                        <div class="col-sm-2 text-muted d-flex justify-content-center">
+                            (4점 만점)
                         </div>
-                        <hr>
-                        <p class="card-text">
-                        <h6 class="card-subtitle mb-2 text-muted">주요 평가내용</h6>
-
-                        <ul style="padding: 0">
-                            <li>산업의 특성</li>
-                            <li>산업환경분석</li>
-                        </ul>
-                        <br>
-                        <h6 class="card-subtitle mb-2 text-muted">세부 분석내용 및 방법</h6>
-
-                        <ul style="padding: 0">
-                            <li>전후방 산업 분류</li>
-                            <li>산업의 특성 분석</li>
-                            <li>거시 환경분석모델 등을 통해 산업환경분석</li>
-                            <li>산업발전 추이 및 전망</li>
-                        </ul>
-                        </p>
                     </div>
-                </div>
-                <div class="card col-md-3" style="border-top: none">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-center">
-                            <h5 class="card-title" style="margin-bottom: 0">시장경쟁분석</h5>
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">권리보호강도</label>
+                        <div class="col-sm-6">
+                            <input type="number" class="form-control form2" requried>
                         </div>
-                        <hr>
-                        <p class="card-text">
-                        <h6 class="card-subtitle mb-2 text-muted">주요 평가내용</h6>
-
-                        <ul style="padding: 0">
-                            <li>적용시장의 경쟁구조 및 지배유형</li>
-                            <li>경쟁업체 현황 및 시장 점유율</li>
-                            <li>경쟁제품과의 비교 분석</li>
-                            <li>시장지위 확보 가능성</li>
-                        </ul>
-                        <br>
-                        <h6 class="card-subtitle mb-2 text-muted">세부 분석내용 및 방법</h6>
-
-                        <ul style="padding: 0">
-                            <li>대상기술 적용시장의 경쟁구조 분석</li>
-                            <li>경쟁업체별 시장점유율 및 변화 추이 분석</li>
-                            <li>경쟁제품과의 차별적 요소 분석</li>
-                            <li>시장진입 장애요인과 촉진 요인을 분석한 후 진입 가능성 평가</li>
-                            <li>시장진입 후 시장점유율 확보 가능성 분석</li>
-                        </ul>
-                        </p>
-                    </div>
-                </div>
-                <div class="card col-md-3" style="border-top: none">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-center">
-                            <h5 class="card-title" style="margin-bottom: 0">시장규모 및 전망</h5>
+                        <div class="col-sm-2 text-muted d-flex justify-content-center">
+                            (4점 만점)
                         </div>
-                        <hr>
-                        <p class="card-text">
-                        <h6 class="card-subtitle mb-2 text-muted">주요 평가내용</h6>
-
-                        <ul style="padding: 0">
-                            <li>국내외 시장규모 및 동향</li>
-                            <li>중장기 성장률</li>
-                            <li>시장수요 전망</li>
-                            <li>시장진입 가능성</li>
-                        </ul>
-                        <br>
-                        <h6 class="card-subtitle mb-2 text-muted">세부 분석내용 및 방법</h6>
-
-                        <ul style="padding: 0">
-                            <li>국내외 시장분석에 근거한 시장규모 추정(통계적 예측모형 사용 가능)</li>
-                            <li>대상기술 시장의 중장기 성장률 추이 분석</li>
-                            <li>현금흐름 추정기간 동안의 시장규모 전망</li>
-                        </ul>
-                        </p>
                     </div>
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">대상기술제품(서비스) 보호가능성</label>
+                        <div class="col-sm-6">
+                            <input type="number" class="form-control form2" requried>
+                        </div>
+                        <div class="col-sm-2 text-muted d-flex justify-content-center">
+                            (4점 만점)
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">국내외 포트폴리오 구축의 적절성</label>
+                        <div class="col-sm-6">
+                            <input type="number" class="form-control form2" requried>
+                        </div>
+                        <div class="col-sm-2 text-muted d-flex justify-content-center">
+                            (3점 만점)
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">침해발견 및 입증용이성</label>
+                        <div class="col-sm-6">
+                            <input type="number" class="form-control form2" requried>
+                        </div>
+                        <div class="col-sm-2 text-muted d-flex justify-content-center">
+                            (3점 만점)
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">권리행사 제한가능성</label>
+                        <div class="col-sm-6">
+                            <input type="number" class="form-control form2" requried>
+                        </div>
+                        <div class="col-sm-2 text-muted d-flex justify-content-center">
+                            (3점 만점)
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">분쟁 및 라이선스활성도</label>
+                        <div class="col-sm-6">
+                            <input type="number" class="form-control form2" requried>
+                        </div>
+                        <div class="col-sm-2 text-muted d-flex justify-content-center">
+                            (3점 만점)
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">특허출원 활성도</label>
+                        <div class="col-sm-6">
+                            <input type="number" class="form-control form2" requried>
+                        </div>
+                        <div class="col-sm-2 text-muted d-flex justify-content-center">
+                            (3점 만점)
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">회피설계 가능성</label>
+                        <div class="col-sm-6">
+                            <input type="number" class="form-control form2" requried>
+                        </div>
+                        <div class="col-sm-2 text-muted d-flex justify-content-center">
+                            (3점 만점)
+                        </div>
+                    </div>
+                    <div class="row d-flex justify-content-end">
+                        <input id="sum2" class="form-control col-md-10" type="number" placeholder="Sum" readonly>
+                        <button type="button" id="btn2" class="btn btn-outline-primary col-md-2">총합 구하기</button>
+                        <script>
+                            $(document).ready(function () {
+                                $("#btn2").click(function () {
+                                    const values = document.getElementsByClassName("form2");
+                                    let total = 0;
+                                    let flag = true;
+                                    for (var i = 0; i < values.length; i++) {
+                                        let input_num = Number(values[i].value);
+                                        if (i <= 2 && input_num >= 1 && input_num <= 4)
+                                            total += input_num;
+                                        else if (input_num >= 1 && input_num <= 3)
+                                            total += input_num;
+                                        else {
+                                            alert("입력 범위를 확인하세요.");
+                                            flag = false;
+                                            break;
+                                        }
+                                    }
+                                    if (flag)
+                                        document.getElementById("sum2").value = total
+                                });
+                            })
+                        </script>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="list-marketability" role="tabpanel" aria-labelledby="list-messages-list">
+        <div class="row" style="padding: 0 15px">
+            <div class="card col-md-3" style="border-top: none">
+                <div class="card-body">
+                    <div class="d-flex justify-content-center">
+                        <h5 class="card-title" style="margin-bottom: 0">시장개요</h5>
+                    </div>
+                    <hr>
+                    <p class="card-text">
+                    <h6 class="card-subtitle mb-2 text-muted">주요 평가내용</h6>
+
+                    <ul style="padding: 0">
+                        <li>대상기술 적용제품의 정의</li>
+                        <li>시장의 정의 및 특성</li>
+                    </ul>
+                    <br>
+                    <h6 class="card-subtitle mb-2 text-muted">세부 분석내용 및 방법</h6>
+
+                    <ul style="padding: 0">
+                        <li>대상기술 적용제품(또는 공정)에 대한 정의</li>
+                        <li>대상기술 적용시장 및 산업에 대한 정의, 범위 및 특징</li>
+                    </ul>
+                    </p>
                 </div>
             </div>
-            <div class="card" style="padding: 0 15px;">
+            <div class="card col-md-3" style="border-top: none">
                 <div class="card-body">
-                    <h5 class="card-title d-flex justify-content-center">관련 평가항목</h5>
+                    <div class="d-flex justify-content-center">
+                        <h5 class="card-title" style="margin-bottom: 0">시장환경분석</h5>
+                    </div>
                     <hr>
-                    <form>
-                        <div class="form-group row">
-                            <label class="col-sm-4 col-form-label">시장경쟁강도</label>
-                            <div class="col-sm-6">
-                                <input type="number" class="form-control form3" requried>
-                            </div>
-                            <div class="col-sm-2 text-muted d-flex justify-content-center">
-                                (4점 만점)
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-4 col-form-label">시장의 성장전망</label>
-                            <div class="col-sm-6">
-                                <input type="number" class="form-control form3" requried>
-                            </div>
-                            <div class="col-sm-2 text-muted d-flex justify-content-center">
-                                (4점 만점)
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-4 col-form-label">신제품 출현가능성</label>
-                            <div class="col-sm-6">
-                                <input type="number" class="form-control form3" requried>
-                            </div>
-                            <div class="col-sm-2 text-muted d-flex justify-content-center">
-                                (4점 만점)
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-4 col-form-label">수요민감도</label>
-                            <div class="col-sm-6">
-                                <input type="number" class="form-control form3" requried>
-                            </div>
-                            <div class="col-sm-2 text-muted d-flex justify-content-center">
-                                (4점 만점)
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-4 col-form-label">시장진입가능성</label>
-                            <div class="col-sm-6">
-                                <input type="number" class="form-control form3" requried>
-                            </div>
-                            <div class="col-sm-2 text-muted d-flex justify-content-center">
-                                (4점 만점)
-                            </div>
-                        </div>
-                        <div class="row d-flex justify-content-end">
-                            <input id="sum3" class="form-control col-md-10" type="number" placeholder="Sum" readonly>
-                            <button type="button" id="btn3" class="btn btn-outline-primary col-md-2">총합 구하기</button>
-                            <script>
-                                $(document).ready(function() {
-                                    $("#btn3").click(function() {
-                                        const values = document.getElementsByClassName("form3");
-                                        let total = 0;
-                                        let flag = true;
-                                        for (var i = 0; i < values.length; i++) {
-                                            let input_num =  Number(values[i].value);
-                                            if (input_num >= 1 && input_num <= 4)
-                                                total += input_num;
-                                            else {
-                                                alert("입력 범위를 확인하세요.");
-                                                flag = false;
-                                                break;
-                                            }
-                                        }
-                                        if (flag)
-                                            document.getElementById("sum4").value = total
-                                    });
-                                })
-                            </script>
-                        </div>
-                    </form>
+                    <p class="card-text">
+                    <h6 class="card-subtitle mb-2 text-muted">주요 평가내용</h6>
+
+                    <ul style="padding: 0">
+                        <li>산업의 특성</li>
+                        <li>산업환경분석</li>
+                    </ul>
+                    <br>
+                    <h6 class="card-subtitle mb-2 text-muted">세부 분석내용 및 방법</h6>
+
+                    <ul style="padding: 0">
+                        <li>전후방 산업 분류</li>
+                        <li>산업의 특성 분석</li>
+                        <li>거시 환경분석모델 등을 통해 산업환경분석</li>
+                        <li>산업발전 추이 및 전망</li>
+                    </ul>
+                    </p>
+                </div>
+            </div>
+            <div class="card col-md-3" style="border-top: none">
+                <div class="card-body">
+                    <div class="d-flex justify-content-center">
+                        <h5 class="card-title" style="margin-bottom: 0">시장경쟁분석</h5>
+                    </div>
+                    <hr>
+                    <p class="card-text">
+                    <h6 class="card-subtitle mb-2 text-muted">주요 평가내용</h6>
+
+                    <ul style="padding: 0">
+                        <li>적용시장의 경쟁구조 및 지배유형</li>
+                        <li>경쟁업체 현황 및 시장 점유율</li>
+                        <li>경쟁제품과의 비교 분석</li>
+                        <li>시장지위 확보 가능성</li>
+                    </ul>
+                    <br>
+                    <h6 class="card-subtitle mb-2 text-muted">세부 분석내용 및 방법</h6>
+
+                    <ul style="padding: 0">
+                        <li>대상기술 적용시장의 경쟁구조 분석</li>
+                        <li>경쟁업체별 시장점유율 및 변화 추이 분석</li>
+                        <li>경쟁제품과의 차별적 요소 분석</li>
+                        <li>시장진입 장애요인과 촉진 요인을 분석한 후 진입 가능성 평가</li>
+                        <li>시장진입 후 시장점유율 확보 가능성 분석</li>
+                    </ul>
+                    </p>
+                </div>
+            </div>
+            <div class="card col-md-3" style="border-top: none">
+                <div class="card-body">
+                    <div class="d-flex justify-content-center">
+                        <h5 class="card-title" style="margin-bottom: 0">시장규모 및 전망</h5>
+                    </div>
+                    <hr>
+                    <p class="card-text">
+                    <h6 class="card-subtitle mb-2 text-muted">주요 평가내용</h6>
+
+                    <ul style="padding: 0">
+                        <li>국내외 시장규모 및 동향</li>
+                        <li>중장기 성장률</li>
+                        <li>시장수요 전망</li>
+                        <li>시장진입 가능성</li>
+                    </ul>
+                    <br>
+                    <h6 class="card-subtitle mb-2 text-muted">세부 분석내용 및 방법</h6>
+
+                    <ul style="padding: 0">
+                        <li>국내외 시장분석에 근거한 시장규모 추정(통계적 예측모형 사용 가능)</li>
+                        <li>대상기술 시장의 중장기 성장률 추이 분석</li>
+                        <li>현금흐름 추정기간 동안의 시장규모 전망</li>
+                    </ul>
+                    </p>
                 </div>
             </div>
         </div>
-        <div class="tab-pane fade" id="list-business" role="tabpanel" aria-labelledby="list-settings-list">
-            <div class="row" style="padding: 0 15px">
-                <div class="card col-md-6" style="border-top: none">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-center">
-                            <h5 class="card-title" style="margin-bottom: 0">사업화 역량</h5>
+        <div class="card" style="padding: 0 15px;">
+            <div class="card-body">
+                <h5 class="card-title d-flex justify-content-center">관련 평가항목</h5>
+                <hr>
+                <form>
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">시장경쟁강도</label>
+                        <div class="col-sm-6">
+                            <input type="number" class="form-control form3" requried>
                         </div>
-                        <hr>
-                        <p class="card-text">
-                        <h6 class="card-subtitle mb-2 text-muted">주요 평가내용</h6>
-
-                        <ul style="padding: 0">
-                            <li>사업주체가 보유 또는 계획 중인 인적·물적 사업화 역량 종합</li>
-                        </ul>
-                        <br>
-                        <h6 class="card-subtitle mb-2 text-muted">세부 분석내용 및 방법</h6>
-
-                        <ul style="padding: 0">
-                            <li>사업주체의 정의와 현황</li>
-                            <li>사업주체의 경영진, 기술개발, IP관리, 생산, 마케팅 등 인적 물적 역량에 대한 분석</li>
-                            <li>사업주체의 인적·물적 자원에 대한 투자계획</li>
-                            <li>사업주체의 사업화계획 추진 타당성 및 실현가능성 분석</li>
-                        </ul>
-                        </p>
-                    </div>
-                </div>
-                <div class="card col-md-6" style="border-top: none">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-center">
-                            <h5 class="card-title" style="margin-bottom: 0">제품 경쟁력</h5>
+                        <div class="col-sm-2 text-muted d-flex justify-content-center">
+                            (4점 만점)
                         </div>
-                        <hr>
-                        <p class="card-text">
-                        <h6 class="card-subtitle mb-2 text-muted">주요 평가내용</h6>
-
-                        <ul style="padding: 0">
-                            <li>대상기술 제품경쟁력 등의 속성 파악</li>
-                        </ul>
-                        <br>
-                        <h6 class="card-subtitle mb-2 text-muted">세부 분석내용 및 방법</h6>
-
-                        <ul style="padding: 0">
-                            <li>대상기술 제품의 기능과 특성</li>
-                            <li>대상기술 제품의 경쟁력(가격, 품질, 기타 경쟁력)</li>
-                            <li>대상기술 제품의 경쟁력 제약요인</li>
-                        </ul>
-                        </p>
                     </div>
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">시장의 성장전망</label>
+                        <div class="col-sm-6">
+                            <input type="number" class="form-control form3" requried>
+                        </div>
+                        <div class="col-sm-2 text-muted d-flex justify-content-center">
+                            (4점 만점)
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">신제품 출현가능성</label>
+                        <div class="col-sm-6">
+                            <input type="number" class="form-control form3" requried>
+                        </div>
+                        <div class="col-sm-2 text-muted d-flex justify-content-center">
+                            (4점 만점)
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">수요민감도</label>
+                        <div class="col-sm-6">
+                            <input type="number" class="form-control form3" requried>
+                        </div>
+                        <div class="col-sm-2 text-muted d-flex justify-content-center">
+                            (4점 만점)
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">시장진입가능성</label>
+                        <div class="col-sm-6">
+                            <input type="number" class="form-control form3" requried>
+                        </div>
+                        <div class="col-sm-2 text-muted d-flex justify-content-center">
+                            (4점 만점)
+                        </div>
+                    </div>
+                    <div class="row d-flex justify-content-end">
+                        <input id="sum3" class="form-control col-md-10" type="number" placeholder="Sum" readonly>
+                        <button type="button" id="btn3" class="btn btn-outline-primary col-md-2">총합 구하기</button>
+                        <script>
+                            $(document).ready(function () {
+                                $("#btn3").click(function () {
+                                    const values = document.getElementsByClassName("form3");
+                                    let total = 0;
+                                    let flag = true;
+                                    for (var i = 0; i < values.length; i++) {
+                                        let input_num = Number(values[i].value);
+                                        if (input_num >= 1 && input_num <= 4)
+                                            total += input_num;
+                                        else {
+                                            alert("입력 범위를 확인하세요.");
+                                            flag = false;
+                                            break;
+                                        }
+                                    }
+                                    if (flag)
+                                        document.getElementById("sum4").value = total
+                                });
+                            })
+                        </script>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="list-business" role="tabpanel" aria-labelledby="list-settings-list">
+        <div class="row" style="padding: 0 15px">
+            <div class="card col-md-6" style="border-top: none">
+                <div class="card-body">
+                    <div class="d-flex justify-content-center">
+                        <h5 class="card-title" style="margin-bottom: 0">사업화 역량</h5>
+                    </div>
+                    <hr>
+                    <p class="card-text">
+                    <h6 class="card-subtitle mb-2 text-muted">주요 평가내용</h6>
+
+                    <ul style="padding: 0">
+                        <li>사업주체가 보유 또는 계획 중인 인적·물적 사업화 역량 종합</li>
+                    </ul>
+                    <br>
+                    <h6 class="card-subtitle mb-2 text-muted">세부 분석내용 및 방법</h6>
+
+                    <ul style="padding: 0">
+                        <li>사업주체의 정의와 현황</li>
+                        <li>사업주체의 경영진, 기술개발, IP관리, 생산, 마케팅 등 인적 물적 역량에 대한 분석</li>
+                        <li>사업주체의 인적·물적 자원에 대한 투자계획</li>
+                        <li>사업주체의 사업화계획 추진 타당성 및 실현가능성 분석</li>
+                    </ul>
+                    </p>
                 </div>
             </div>
-            
-            <div class="card" style="padding: 0 15px;">
+            <div class="card col-md-6" style="border-top: none">
                 <div class="card-body">
-                    <h5 class="card-title d-flex justify-content-center">관련 평가항목</h5>
+                    <div class="d-flex justify-content-center">
+                        <h5 class="card-title" style="margin-bottom: 0">제품 경쟁력</h5>
+                    </div>
                     <hr>
-                    <form>
-                        <div class="form-group row">
-                            <label class="col-sm-4 col-form-label">사업화 준비 기간</label>
-                            <div class="col-sm-6">
-                                <input type="number" class="form-control form4" requried>
-                            </div>
-                            <div class="col-sm-2 text-muted d-flex justify-content-center">
-                                (3점 만점)
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-4 col-form-label">사업화 소요 자본</label>
-                            <div class="col-sm-6">
-                                <input type="number" class="form-control form4" requried>
-                            </div>
-                            <div class="col-sm-2 text-muted d-flex justify-content-center">
-                                (3점 만점)
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-4 col-form-label">생산용이성</label>
-                            <div class="col-sm-6">
-                                <input type="number" class="form-control form4" requried>
-                            </div>
-                            <div class="col-sm-2 text-muted d-flex justify-content-center">
-                                (3점 만점)
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-4 col-form-label">매출 성장추세</label>
-                            <div class="col-sm-6">
-                                <input type="number" class="form-control form4" requried>
-                            </div>
-                            <div class="col-sm-2 text-muted d-flex justify-content-center">
-                                (3점 만점)
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-4 col-form-label">수익성</label>
-                            <div class="col-sm-6">
-                                <input type="number" class="form-control form4" requried>
-                            </div>
-                            <div class="col-sm-2 text-muted d-flex justify-content-center">
-                                (2점 만점)
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-4 col-form-label">파생적 매출</label>
-                            <div class="col-sm-6">
-                                <input type="number" class="form-control form4" requried>
-                            </div>
-                            <div class="col-sm-2 text-muted d-flex justify-content-center">
-                                (2점 만점)
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-4 col-form-label">경제적 수명</label>
-                            <div class="col-sm-6">
-                                <input type="number" class="form-control form4" requried>
-                            </div>
-                            <div class="col-sm-2 text-muted d-flex justify-content-center">
-                                (2점 만점)
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-4 col-form-label">예상 시장점유율</label>
-                            <div class="col-sm-6">
-                                <input type="number" class="form-control form4" requried>
-                            </div>
-                            <div class="col-sm-2 text-muted d-flex justify-content-center">
-                                (2점 만점)
-                            </div>
-                        </div>
-                        <div class="row d-flex justify-content-end">
-                            <input id="sum4" class="form-control col-md-10" type="number" placeholder="Sum" readonly>
-                            <button type="button" id="btn4" class="btn btn-outline-primary col-md-2">총합 구하기</button>
-                            <script>
-                                $(document).ready(function() {
-                                    $("#btn4").click(function() {
-                                        const values = document.getElementsByClassName("form4");
-                                        let total = 0;
-                                        let flag = true;
-                                        for (var i = 0; i < values.length; i++) {
-                                            let input_num =  Number(values[i].value);
-                                            if ( i <= 3 && input_num >= 1 && input_num <= 3)
-                                                total += input_num;
-                                            else if (input_num >= 1 && input_num <= 2)
-                                                total += input_num;
-                                            else {
-                                                alert("입력 범위를 확인하세요.");
-                                                flag = false;
-                                                break;
-                                            }
-                                        }
-                                        if (flag)
-                                            document.getElementById("sum4").value = total
-                                    });
-                                })
-                            </script>
-                        </div>
-                    </form>
+                    <p class="card-text">
+                    <h6 class="card-subtitle mb-2 text-muted">주요 평가내용</h6>
+
+                    <ul style="padding: 0">
+                        <li>대상기술 제품경쟁력 등의 속성 파악</li>
+                    </ul>
+                    <br>
+                    <h6 class="card-subtitle mb-2 text-muted">세부 분석내용 및 방법</h6>
+
+                    <ul style="padding: 0">
+                        <li>대상기술 제품의 기능과 특성</li>
+                        <li>대상기술 제품의 경쟁력(가격, 품질, 기타 경쟁력)</li>
+                        <li>대상기술 제품의 경쟁력 제약요인</li>
+                    </ul>
+                    </p>
                 </div>
+            </div>
+        </div>
+
+        <div class="card" style="padding: 0 15px;">
+            <div class="card-body">
+                <h5 class="card-title d-flex justify-content-center">관련 평가항목</h5>
+                <hr>
+                <form>
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">사업화 준비 기간</label>
+                        <div class="col-sm-6">
+                            <input type="number" class="form-control form4" requried>
+                        </div>
+                        <div class="col-sm-2 text-muted d-flex justify-content-center">
+                            (3점 만점)
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">사업화 소요 자본</label>
+                        <div class="col-sm-6">
+                            <input type="number" class="form-control form4" requried>
+                        </div>
+                        <div class="col-sm-2 text-muted d-flex justify-content-center">
+                            (3점 만점)
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">생산용이성</label>
+                        <div class="col-sm-6">
+                            <input type="number" class="form-control form4" requried>
+                        </div>
+                        <div class="col-sm-2 text-muted d-flex justify-content-center">
+                            (3점 만점)
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">매출 성장추세</label>
+                        <div class="col-sm-6">
+                            <input type="number" class="form-control form4" requried>
+                        </div>
+                        <div class="col-sm-2 text-muted d-flex justify-content-center">
+                            (3점 만점)
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">수익성</label>
+                        <div class="col-sm-6">
+                            <input type="number" class="form-control form4" requried>
+                        </div>
+                        <div class="col-sm-2 text-muted d-flex justify-content-center">
+                            (2점 만점)
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">파생적 매출</label>
+                        <div class="col-sm-6">
+                            <input type="number" class="form-control form4" requried>
+                        </div>
+                        <div class="col-sm-2 text-muted d-flex justify-content-center">
+                            (2점 만점)
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">경제적 수명</label>
+                        <div class="col-sm-6">
+                            <input type="number" class="form-control form4" requried>
+                        </div>
+                        <div class="col-sm-2 text-muted d-flex justify-content-center">
+                            (2점 만점)
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">예상 시장점유율</label>
+                        <div class="col-sm-6">
+                            <input type="number" class="form-control form4" requried>
+                        </div>
+                        <div class="col-sm-2 text-muted d-flex justify-content-center">
+                            (2점 만점)
+                        </div>
+                    </div>
+                    <div class="row d-flex justify-content-end">
+                        <input id="sum4" class="form-control col-md-10" type="number" placeholder="Sum" readonly>
+                        <button type="button" id="btn4" class="btn btn-outline-primary col-md-2">총합 구하기</button>
+                        <script>
+                            $(document).ready(function () {
+                                $("#btn4").click(function () {
+                                    const values = document.getElementsByClassName("form4");
+                                    let total = 0;
+                                    let flag = true;
+                                    for (var i = 0; i < values.length; i++) {
+                                        let input_num = Number(values[i].value);
+                                        if (i <= 3 && input_num >= 1 && input_num <= 3)
+                                            total += input_num;
+                                        else if (input_num >= 1 && input_num <= 2)
+                                            total += input_num;
+                                        else {
+                                            alert("입력 범위를 확인하세요.");
+                                            flag = false;
+                                            break;
+                                        }
+                                    }
+                                    if (flag)
+                                        document.getElementById("sum4").value = total
+                                });
+                            })
+                        </script>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
 </div>
-
-
-
-
-
-
 {% endblock %}
