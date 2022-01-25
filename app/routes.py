@@ -34,6 +34,15 @@ def evaluation() :
         login = False
     return render_template('evaluation/evaluation.html', login=login)
 
+# 옥션
+@app.route('/auction')
+def auction() :
+    if 'login' in session :
+        login = session['login']
+    else :
+        login = False
+    return render_template('auction.html', login=login)
+
 # 커뮤니티
 @app.route('/community')
 def community() :
