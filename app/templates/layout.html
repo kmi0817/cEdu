@@ -253,63 +253,65 @@
                     });
 
                 </script>
-                <!-- <div class="btn-group" style="margin: 0 0.5rem 0.5rem 0;">
-                    <button class="btn btn-secondary" type="button" id="dropdownMenuButton"
-                        aria-haspopup="true" aria-expanded="false" onclick="location.href='#'">
+                <div class="btn-group" style="margin: 0 0.5rem 0.5rem 0;">
+                    <button class="btn btn-secondary" type="button" id="dropdownMenuButton" aria-haspopup="true"
+                        aria-expanded="false" onclick="location.href='#'">
                         지식거래장터 소개
                     </button>
                 </div>
                 <div class="btn-group" style="margin: 0 0.5rem 0.5rem 0;">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                    <button type="button" class="btn btn-secondary" onclick="location.href='/evaluation'">동료평가</button>
+                    <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        동료평가
+                        <span class="sr-only">Toggle Dropdown</span>
                     </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="/evaluation">동료평가</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">전문가 등록</a>
                         <a class="dropdown-item" href="#">지식자산 평가 신청</a>
                         <a class="dropdown-item" href="#">평가결과 공개</a>
                         <a class="dropdown-item" href="#">지식자산 선별</a>
                     </div>
                 </div>
                 <div class="btn-group" style="margin: 0 0.5rem 0.5rem 0;">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                    <button type="button" class="btn btn-secondary" onclick="location.href='/auction'">옥션</button>
+                    <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        옥션
+                        <span class="sr-only">Toggle Dropdown</span>
                     </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="/auction">옥션</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">진행중 옥션</a>
+                        <a class="dropdown-item" href="#">최근 마감된 옥션</a>
                     </div>
                 </div>
                 <div class="btn-group" style="margin: 0 0.5rem 0.5rem 0;">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                    <button type="button" class="btn btn-secondary" onclick="location.href='/#'">마켓</button>
+                    <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        마켓
+                        <span class="sr-only">Toggle Dropdown</span>
                     </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">매매</a>
+                        <a class="dropdown-item" href="#">라이선싱</a>
                     </div>
                 </div>
                 <div class="btn-group" style="margin: 0 0.5rem 0.5rem 0;">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                    <button type="button" class="btn btn-secondary" onclick="location.href='/#'">ODI</button>
+                    <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        ODI
+                        <span class="sr-only">Toggle Dropdown</span>
                     </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">NFT(지식자산)1</a>
+                        <a class="dropdown-item" href="#">NFT(지식자산)2</a>
                     </div>
                 </div>
                 <div class="btn-group" style="margin: 0 0.5rem 0.5rem 0;">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                    <button type="button" class="btn btn-secondary" onclick="location.href='/#'">아이디어 장터</button>
+                    <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        아이디어 장터
+                        <span class="sr-only">Toggle Dropdown</span>
                     </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <div class="dropdown-menu">
                         <a class="dropdown-item" href="#">아이디어 장터</a>
                         <a class="dropdown-item" href="#">아이디어 도전</a>
                         <a class="dropdown-item" href="/community">커뮤니티</a>
@@ -327,15 +329,15 @@
                     </div>
                 </div>
             </div>
-        </div> -->
+        </div>
 
-                <br><br>
+        <br><br>
 
-                {% block content %}
-                {% endblock %}
+        {% block content %}
+        {% endblock %}
 
-                <br>
-            </div>
+        <br>
+    </div>
 </body>
 
 </html>
