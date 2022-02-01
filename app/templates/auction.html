@@ -35,10 +35,22 @@
                 <div class="col-md-4">가격</div>
                 <div class="col-md-4">구매 수량</div>
             </div>
-            <div class="card-body row">
-                <div class="col-md-4">판매 수량 222</div>
-                <div class="col-md-4">가격222</div>
-                <div class="col-md-4">구매 수량222</div>
+            <div class="card-body row auction" style="padding: 0">
+                {% for li in tempList %}
+                <div class="col-md-4">판매 수량 {{ li }} </div>
+                <div class="col-md-4 price-blue">가격 {{ li }} </div>
+                <div class="col-md-4"></div>
+                {% endfor %}
+                {% for li in tempList %}
+                <div class="col-md-4"></div>
+                <div class="col-md-4 price-red">가격 {{ li }} </div>
+                <div class="col-md-4">구매 수량 {{ li }} </div>
+                {% endfor %}
+            </div>
+            <div class="card-header bg-white row" style="border-bottom: none; border-top: 1px solid rgba(0, 0, 0, 0.125)">
+                <div class="col-md-4">26</div>
+                <div class="col-md-4">총수량</div>
+                <div class="col-md-4">23</div>
             </div>
         </div>
     </div>
