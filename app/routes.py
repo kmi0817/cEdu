@@ -41,7 +41,20 @@ def auction() :
         login = session['login']
     else :
         login = False
-    return render_template('auction.html', login=login)
+
+    tempList = [x for x in range(5)]
+    return render_template('auction.html', login=login, tempList=tempList)
+
+# 마켓
+@app.route('/market')
+def market() :
+    if 'login' in session :
+        login = session['login']
+    else :
+        login = False
+
+    tempList = [x for x in range(5)]
+    return render_template('market.html', login=login, tempList=tempList)
 
 # 커뮤니티
 @app.route('/community')
