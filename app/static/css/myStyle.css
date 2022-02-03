@@ -3,10 +3,8 @@
 }
 .auction .price-blue {
     background-color: rgba(188, 219, 255, 0.459);
-    color: blue;
 }
 
 .auction .price-red {
     background-color: rgba(245, 163, 153, 0.459);
-    color: red;
 }
