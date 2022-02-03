@@ -8,3 +8,8 @@
 .auction .price-red {
     background-color: rgba(245, 163, 153, 0.459);
 }
+
+.list-sub li {
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+}
