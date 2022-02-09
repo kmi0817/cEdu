@@ -77,7 +77,7 @@ def community() :
     for index, result in enumerate(projects) :
         result['description'] = result['description'][:150] + '...' # make description 150 chars (substr)
         projects_data[index+1] = result
-    return render_template('community.html', login=login, communities=communities_data, projects=projects_data)
+    return render_template('community/community.html', login=login, communities=communities_data, projects=projects_data)
 
 
 @app.route('/community/<slug>', methods=['GET', 'DELETE'])
@@ -91,9 +91,9 @@ def community_slug(slug) :
         posting = db.communities.find_one({ 'slug': slug, 'category': 'community' })
         comments = db.comments.find({ 'posting_id': str(posting['_id']) })
         if comments is None :
-            return render_template('show_slug.html', login=login, posting=posting)
+            return render_template('community/show_slug.html', login=login, posting=posting)
         else :
-            return render_template('show_slug.html', login=login, posting=posting, comments=comments)
+            return render_template('community/show_slug.html', login=login, posting=posting, comments=comments)
 
     elif request.method == 'DELETE' :
         try :
@@ -113,9 +113,9 @@ def project_slug(slug) :
         posting = db.communities.find_one({ 'slug': slug, 'category': 'project' })
         comments = db.comments.find({ 'posting_id': str(posting['_id']) })
         if comments is None :
-            return render_template('show_slug.html', login=login, posting=posting)
+            return render_template('community/show_slug.html', login=login, posting=posting)
         else :
-            return render_template('show_slug.html', login=login, posting=posting, comments=comments)
+            return render_template('community/show_slug.html', login=login, posting=posting, comments=comments)
 
     elif request.method == 'DELETE' :
         try :
@@ -132,7 +132,7 @@ def write() :
             login = session['login']
         else :
             login = False
-        return render_template('write.html', login=login)
+        return render_template('community/write.html', login=login)
 
     elif request.method == 'POST' :
         values = request.form
@@ -168,7 +168,7 @@ def edit_slug(id) :
         print(f'*** id: {id}')
         results = db.communities.find_one({ '_id': ObjectId(id) })
         print(results)
-        return render_template('edit.html', login=login, results=results)
+        return render_template('community/edit.html', login=login, results=results)
 
     elif request.method == 'POST' :
         values = request.form
