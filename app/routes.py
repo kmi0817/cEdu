@@ -25,6 +25,15 @@ def index() :
         login = False
     return render_template('index.html', login=login)
 
+# 지식거래장터 소개
+@app.route('/info')
+def into() :
+    if 'login' in session :
+        login = session['login']
+    else :
+        login = False
+    return render_template('info.html', login=login)
+
 # 동료평가
 @app.route('/evaluation')
 def evaluation() :
