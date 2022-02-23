@@ -42,7 +42,7 @@
                             <td>{{ n.q1 }}</td>
                             <td>{{ n.q2 }}</td>
                             <td>{{ n.q3 }}</td>
-                            <td><input type="radio" id="chosen_n" value="{{ n._id }}"></td>
+                            <td><input type="radio" name="chosen_n" value="{{ n._id }}"></td>
                         </tr>
                         {% endfor %}
                     </tbody>
@@ -52,7 +52,7 @@
                     <script>
                         $(document).ready(function () {
                             $("#btn1").click(function () {
-                                const _id = document.getElementById("chosen_n").value;
+                                const _id = $("input[name=chosen_n]:checked").val();
                                 alert("선택된 기술 수명 id는" + _id + "입니다.");
                             });
                         });
@@ -622,10 +622,38 @@
                 <div class="d-flex justify-content-center">
                     <span>=</span>
                     <div class="form-group col-md-3">
-                        <label for="inputZero">기술기여도 (%)</label>
-                        <input type="Number" class="form-control" id="inputZero">
+                        <label for="inputFour">기술기여도 (%)</label>
+                        <input type="Number" class="form-control" id="inputFour">
                     </div>
                 </div>
+                <hr>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">표준산업분류코드</th>
+                            <th scope="col">표준산업분류코드</th>
+                            <th scope="col">최대무형자산가치비율</th>
+                            <th scope="col">기술자산비율</th>
+                            <th scope="col">산업기술요소</th>
+                            <th scope="col">선택</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for contribution in techContributions %}
+                        <tr>
+                            <th scope="row">{{ contribution.code }}</th>
+                            <td>{{ contribution.code_desc }}</td>
+                            <td>{{ contribution.rate1 }}</td>
+                            <td>{{ contribution.rate2 }}</td>
+                            <td>{{ contribution.rate3 }}</td>
+                            <td><input type="radio" name="chosen_contribution" value="{{ contribution.rate3 }}" onclick="chosen_contribution(event)"></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <script>
+                    function chosen_contribution(event) { document.getElementById("inputOne").value = event.target.value; }
+                </script>
             </div>
         </div>
     </div>

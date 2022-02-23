@@ -51,9 +51,9 @@ def value() :
         login = False
 
     ns = db.n.find()
-    print(ns)
+    techContributions = db.techContributions.find()
     
-    return render_template('evaluation/value.html', login=login, ns=ns)
+    return render_template('evaluation/value.html', login=login, ns=ns, techContributions=techContributions)
 
 # 옥션
 @app.route('/auction')
