@@ -34,14 +34,22 @@ def into() :
         login = False
     return render_template('info.html', login=login)
 
-# 동료평가
-@app.route('/evaluation')
-def evaluation() :
+# 동급평가
+@app.route('/peer')
+def peer() :
     if 'login' in session :
         login = session['login']
     else :
         login = False
-    return render_template('evaluation/evaluation.html', login=login)
+    return render_template('evaluation/peer.html', login=login)
+# 가치평가
+@app.route('/value')
+def value() :
+    if 'login' in session :
+        login = session['login']
+    else :
+        login = False
+    return render_template('evaluation/value.html', login=login)
 
 # 옥션
 @app.route('/auction')
