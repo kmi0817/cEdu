@@ -49,7 +49,11 @@ def value() :
         login = session['login']
     else :
         login = False
-    return render_template('evaluation/value.html', login=login)
+
+    ns = db.n.find()
+    print(ns)
+    
+    return render_template('evaluation/value.html', login=login, ns=ns)
 
 # 옥션
 @app.route('/auction')
@@ -295,3 +299,23 @@ def users() :
         return 'delete user'
     elif request.method == 'PATCH' :
         return 'update user'
+
+@app.route('/insert-data', methods=['GET', 'POST'])
+def insert_data() :
+    if request.method == 'GET' :
+        return render_template('insert_data.html')
+    elif request.method == 'POST' :
+        form = request.form
+        data = {
+            'ipc': form['ipc'],
+            'description': form['description'],
+            'avg': float(form['avg']),
+            'q1': int(form['q1']),
+            'q2': int(form['q2']),
+            'q3': int(form['q3'])
+        }
+        try :
+            db.n.insert_one(data) # insert
+        except Exception : # if cannot read from db
+            print("** " + Exception)
+        return redirect(url_for('insert_data'))
