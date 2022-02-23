@@ -300,12 +300,14 @@ def users() :
     elif request.method == 'PATCH' :
         return 'update user'
 
-@app.route('/insert-data', methods=['GET', 'POST'])
+@app.route('/insert-data', methods=['GET'])
 def insert_data() :
     if request.method == 'GET' :
         return render_template('insert_data.html')
-    elif request.method == 'POST' :
-        form = request.form
+@app.route('/insert-data/<id>', methods=['POST'])
+def insert_data_id(id) :
+    form = request.form
+    if id == "1" :
         data = {
             'ipc': form['ipc'],
             'description': form['description'],
@@ -318,4 +320,17 @@ def insert_data() :
             db.n.insert_one(data) # insert
         except Exception : # if cannot read from db
             print("** " + Exception)
-        return redirect(url_for('insert_data'))
+    
+    elif id == "2" :
+        data = {
+            'code': form['code'],
+            'code_desc': form['code_desc'],
+            'rate1': float(form['rate1']),
+            'rate2': float(form['rate2']),
+            'rate3': float(form['rate3'])
+        }
+        try :
+            db.techContributions.insert_one(data) # insert
+        except Exception : # if cannot read from db
+            print("** " + Exception)
+    return redirect(url_for('insert_data'))
