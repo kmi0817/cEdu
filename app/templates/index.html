@@ -1,25 +1,24 @@
 {% extends 'layout.html' %}
 {% block content %}
-<div class="row">
-    <div class="col-sm-3">
-        <div class="card text-center">
-            <a href="/evaluation" role="button" class="btn btn-outline-secondary btn-lg card-body">평가</a>
-        </div>
+<div class="text-center my-5 text-primary font-weight-bold" style="font-size: 2rem; font-family: cursive;">
+    <p>This platform is your gateway to monetizing</p>
+    <p>patents/ideas, whoever you are</p>
+</div>
+<div class="text-center my-5">
+    <h2 class="font-weight-bold">특허 / 아이디어는 수익이 됩니다.</h2>
+</div>
+<div class="row mx-5">
+    <div class="col-3">
+        <a href="/evaluation" role="button" class="btn btn-outline-secondary btn-lg p-5 rounded-circle text-dark" style="background-color: rgb(210, 229, 245);">동료평가</a>
     </div>
-    <div class="col-sm-3">
-        <div class="card text-center">
-            <a href="#" role="button" class="btn btn-outline-dark btn-lg card-body">판매자</a>
-        </div>
+    <div class="col-3">
+        <a href="#" role="button" class="btn btn-outline-secondary btn-lg  p-5 rounded-circle text-dark" style="background-color: rgb(210, 229, 245);">경매자</a>
     </div>
-    <div class="col-sm-3">
-        <div class="card text-center">
-            <a href="#" role="button" class="btn btn-outline-dark btn-lg card-body">구매자</a>
-        </div>
+    <div class="col-3">
+            <a href="#" role="button" class="btn btn-outline-secondary btn-lg p-5 rounded-circle text-dark" style="background-color: rgb(210, 229, 245);">판매자</a>
     </div>
-    <div class="col-sm-3">
-        <div class="card text-center">
-            <a href="#" role="button" class="btn btn-outline-dark btn-lg card-body">경매자</a>
-        </div>
+    <div class="col-3">
+        <a href="#" role="button" class="btn btn-outline-secondary btn-lg p-5 rounded-circle text-dark" style="background-color: rgb(210, 229, 245);">구매자</a>
     </div>
 </div>
 {% endblock %}

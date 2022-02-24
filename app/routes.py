@@ -25,14 +25,35 @@ def index() :
         login = False
     return render_template('index.html', login=login)
 
-# 동료평가
-@app.route('/evaluation')
-def evaluation() :
+# 지식거래장터 소개
+@app.route('/info')
+def into() :
     if 'login' in session :
         login = session['login']
     else :
         login = False
-    return render_template('evaluation/evaluation.html', login=login)
+    return render_template('info.html', login=login)
+
+# 동급평가
+@app.route('/peer')
+def peer() :
+    if 'login' in session :
+        login = session['login']
+    else :
+        login = False
+    return render_template('evaluation/peer.html', login=login)
+# 가치평가
+@app.route('/value')
+def value() :
+    if 'login' in session :
+        login = session['login']
+    else :
+        login = False
+
+    ns = db.n.find()
+    techContributions = db.techContributions.find()
+    
+    return render_template('evaluation/value.html', login=login, ns=ns, techContributions=techContributions)
 
 # 옥션
 @app.route('/auction')
@@ -77,7 +98,7 @@ def community() :
     for index, result in enumerate(projects) :
         result['description'] = result['description'][:150] + '...' # make description 150 chars (substr)
         projects_data[index+1] = result
-    return render_template('community.html', login=login, communities=communities_data, projects=projects_data)
+    return render_template('community/community.html', login=login, communities=communities_data, projects=projects_data)
 
 
 @app.route('/community/<slug>', methods=['GET', 'DELETE'])
@@ -91,9 +112,9 @@ def community_slug(slug) :
         posting = db.communities.find_one({ 'slug': slug, 'category': 'community' })
         comments = db.comments.find({ 'posting_id': str(posting['_id']) })
         if comments is None :
-            return render_template('show_slug.html', login=login, posting=posting)
+            return render_template('community/show_slug.html', login=login, posting=posting)
         else :
-            return render_template('show_slug.html', login=login, posting=posting, comments=comments)
+            return render_template('community/show_slug.html', login=login, posting=posting, comments=comments)
 
     elif request.method == 'DELETE' :
         try :
@@ -113,9 +134,9 @@ def project_slug(slug) :
         posting = db.communities.find_one({ 'slug': slug, 'category': 'project' })
         comments = db.comments.find({ 'posting_id': str(posting['_id']) })
         if comments is None :
-            return render_template('show_slug.html', login=login, posting=posting)
+            return render_template('community/show_slug.html', login=login, posting=posting)
         else :
-            return render_template('show_slug.html', login=login, posting=posting, comments=comments)
+            return render_template('community/show_slug.html', login=login, posting=posting, comments=comments)
 
     elif request.method == 'DELETE' :
         try :
@@ -132,7 +153,7 @@ def write() :
             login = session['login']
         else :
             login = False
-        return render_template('write.html', login=login)
+        return render_template('community/write.html', login=login)
 
     elif request.method == 'POST' :
         values = request.form
@@ -168,7 +189,7 @@ def edit_slug(id) :
         print(f'*** id: {id}')
         results = db.communities.find_one({ '_id': ObjectId(id) })
         print(results)
-        return render_template('edit.html', login=login, results=results)
+        return render_template('community/edit.html', login=login, results=results)
 
     elif request.method == 'POST' :
         values = request.form
@@ -278,3 +299,38 @@ def users() :
         return 'delete user'
     elif request.method == 'PATCH' :
         return 'update user'
+
+@app.route('/insert-data', methods=['GET'])
+def insert_data() :
+    if request.method == 'GET' :
+        return render_template('insert_data.html')
+@app.route('/insert-data/<id>', methods=['POST'])
+def insert_data_id(id) :
+    form = request.form
+    if id == "1" :
+        data = {
+            'ipc': form['ipc'],
+            'description': form['description'],
+            'avg': float(form['avg']),
+            'q1': int(form['q1']),
+            'q2': int(form['q2']),
+            'q3': int(form['q3'])
+        }
+        try :
+            db.n.insert_one(data) # insert
+        except Exception : # if cannot read from db
+            print("** " + Exception)
+    
+    elif id == "2" :
+        data = {
+            'code': form['code'],
+            'code_desc': form['code_desc'],
+            'rate1': float(form['rate1']),
+            'rate2': float(form['rate2']),
+            'rate3': float(form['rate3'])
+        }
+        try :
+            db.techContributions.insert_one(data) # insert
+        except Exception : # if cannot read from db
+            print("** " + Exception)
+    return redirect(url_for('insert_data'))

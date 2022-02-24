@@ -28,7 +28,7 @@
     </li>
 </ul>
 <div class="tab-content" id="nav-tabContent">
-    <div class="tab-pane fade show active" id="list-transaction" role="tabpanel" aria-labelledby="list-home-list">
+    <div class="tab-pane fade show active" id="list-transaction" role="tabpanel">
         <div class="card text-center" style="padding: 0 15px; border-top: none">
             <div class="card-header row">
                 <div class="col-md-4">판매 수량</div>
@@ -37,25 +37,59 @@
             </div>
             <div class="card-body row auction" style="padding: 0">
                 {% for li in tempList %}
-                <div class="col-md-4">판매 수량 {{ li }} </div>
-                <div class="col-md-4 price-blue">가격 {{ li }} </div>
+                <div class="col-md-4 text-primary">판매 수량 {{ li }} </div>
+                <div class="col-md-4 text-primary price-blue">가격 {{ li }} </div>
                 <div class="col-md-4"></div>
                 {% endfor %}
                 {% for li in tempList %}
                 <div class="col-md-4"></div>
-                <div class="col-md-4 price-red">가격 {{ li }} </div>
-                <div class="col-md-4">구매 수량 {{ li }} </div>
+                <div class="col-md-4 text-danger price-red">가격 {{ li }} </div>
+                <div class="col-md-4 text-danger">구매 수량 {{ li }} </div>
                 {% endfor %}
             </div>
-            <div class="card-header bg-white row" style="border-bottom: none; border-top: 1px solid rgba(0, 0, 0, 0.125)">
-                <div class="col-md-4">26</div>
+            <div class="card-header bg-white row"
+                style="border-bottom: none; border-top: 1px solid rgba(0, 0, 0, 0.125)">
+                <div class="col-md-4 text-primary">26</div>
                 <div class="col-md-4">총수량</div>
-                <div class="col-md-4">23</div>
+                <div class="col-md-4 text-danger">23</div>
             </div>
         </div>
     </div>
-    <div class="tab-pane fade" id="list-info" role="tabpanel" aria-labelledby="list-profile-list">
-        2
+    <div class="tab-pane fade" id="list-info" role="tabpanel" style="padding: 0 15px;">
+        <p class="font-weight-bold" style="font-size: 1.5rem; margin-top: 16px;">저작인접권 정보</p>
+        <br>
+        <div class="row nft-info">
+            <div class="col-6 col-md-3 text-muted">공표일자</div>
+            <div class="col-6 col-md-3">2002-02-05</div>
+            <div class="col-6 col-md-3 text-muted">가수</div>
+            <div class="col-6 col-md-3">유미</div>
+
+            <div class="col-6 col-md-3 text-muted">작곡</div>
+            <div class="col-6 col-md-3">김형석</div>
+            <div class="col-6 col-md-3 text-muted">작사</div>
+            <div class="col-6 col-md-3">원태연</div>
+
+            <div class="col-6 col-md-3 text-muted">편곡</div>
+            <div class="col-6 col-md-3">김형석</div>
+            <div class="col-6 col-md-3 text-muted">저작권 보호기간</div>
+            <div class="col-6 col-md-3">발매일 다음 해 1월 1일부터 70년</div>
+
+            <div class="col-6 col-md-3 text-muted">과거 1년 저작권료(1주 기준)</div>
+            <div class="col-6 col-md-3">2,160원</div>
+            <div class="col-6 col-md-3 text-muted">시작가 대비 과거 1년 수익률</div>
+            <div class="col-6 col-md-3">6.5%</div>
+
+            <div class="col-6 col-md-3 text-muted">유통사</div>
+            <div class="col-6 col-md-3">카카오엔터테인먼트</div>
+            <div class="col-6 col-md-3 text-muted">저작권료 지분</div>
+            <div class="col-6 col-md-3">1/23,030</div>
+
+            <div class="col-6 col-md-3 text-muted">기타 주요사항</div>
+            <div class="col-6 col-md-3">
+                <p>* 유통사(전송사용료)의 관리범위에 해당하는 지역의 인접권료 대상</p>
+                <p>* 한국연예제작자협회(보상금)의 관리범위에 해당하는 지역의 인접권료 대상</p>
+            </div>
+        </div>
     </div>
 </div>
 {% endblock %}

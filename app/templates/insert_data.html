@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="//cdn.webix.com/edge/webix.css" type="text/css">
+    <script src="//cdn.webix.com/edge/webix.js" type="text/javascript"></script>
+
+    <link rel="stylesheet" href="../static/css/myStyle.css" type="text/css">
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <title>cEdu</title>
+</head>
+
+<body>
+    <br><br>
+    <div class="container">
+        <form action="/insert-data/1" method="POST">
+            <fieldset>
+                <legend>기술의 경제적 수명</legend>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputEmail4">IPC</label>
+                    <input type="text" class="form-control" id="inputEmail4" name="ipc">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputPassword4">평균</label>
+                    <input type="number" class="form-control" id="inputPassword4" name="avg" step="0.01">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="inputAddress2">내용</label>
+                <input type="text" class="form-control" id="inputAddress2" name="description">
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputCity">Q1</label>
+                    <input type="number" class="form-control" id="inputCity" name="q1">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="inputState">중앙값(Q2)</label>
+                    <input type="number" class="form-control" id="inputState" name="q2">
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="inputZip">Q3</label>
+                    <input type="number" class="form-control" id="inputZip" name="q3">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">완료</button>
+            </fieldset>
+        </form>
+        <br>
+        <form action="/insert-data/2" method="POST">
+            <fieldset>
+                <legend>산업기술요소</legend>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputEmail4">코드</label>
+                        <input type="text" class="form-control" id="inputEmail4" name="code">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputPassword4">표준산업분류 </label>
+                        <input type="text" class="form-control" id="inputPassword4" name="code_desc">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="inputCity">최대무형자산가치비율</label>
+                        <input type="number" class="form-control" id="inputCity" name="rate1" step="0.01" placeholder="데이터가 없을 경우 0을 입력하세요">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputState">기술자산비율</label>
+                        <input type="number" class="form-control" id="inputState" name="rate2" step="0.01" placeholder="데이터가 없을 경우 0을 입력하세요">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputZip">산업기술요소</label>
+                        <input type="number" class="form-control" id="inputZip" name="rate3" step="0.01" placeholder="데이터가 없을 경우 0을 입력하세요">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">완료</button>
+            </fieldset>
+        </form>
+    </div>
+</body>
+
+</html>

@@ -3,10 +3,13 @@
 <div class="media">
     <img class="align-self-center mr-3" src="../../static/img/default.png" alt="Generic placeholder image">
     <div class="media-body">
-        <h5 class="mt-0">특허명이 출력됩니다.</h5>
+        <div class="row">
+            <h5 class="col-md-9">특허명이 출력됩니다.</h5>
+            <div class="col-md-3">특허권자</div>
+        </div>
         <div class="row">
             <div class="col-md-3 text-muted">마감 시간</div>
-            <div class="col-md-3">22년1월6일21시</div>
+            <div class="col-md-3 text-danger">22년1월6일21시</div>
         </div>
         <div class="row">
             <div class="col-md-3 text-muted">옥션 수량</div>
@@ -30,27 +33,70 @@
 <div class="tab-content" id="nav-tabContent">
     <div class="tab-pane fade show active" id="list-transaction" role="tabpanel" aria-labelledby="list-home-list">
         <div class="card text-center" style="padding: 0 15px; border-top: none">
-            <div class="card-header row">
-                <div class="col-md-4">판매 수량</div>
-                <div class="col-md-4">가격</div>
-                <div class="col-md-4">구매 수량</div>
-            </div>
             <div class="card-body row auction" style="padding: 0">
-                {% for li in tempList %}
-                <div class="col-md-4">판매 수량 {{ li }} </div>
-                <div class="col-md-4 price-blue">가격 {{ li }} </div>
-                <div class="col-md-4"></div>
-                {% endfor %}
-                {% for li in tempList %}
-                <div class="col-md-4"></div>
-                <div class="col-md-4 price-red">가격 {{ li }} </div>
-                <div class="col-md-4">구매 수량 {{ li }} </div>
-                {% endfor %}
-            </div>
-            <div class="card-header bg-white row" style="border-bottom: none; border-top: 1px solid rgba(0, 0, 0, 0.125)">
-                <div class="col-md-4">26</div>
-                <div class="col-md-4">총수량</div>
-                <div class="col-md-4">23</div>
+                <div class="col-md-2">
+                    <p class="text-muted">입찰가격(1주)</p>
+                    {% for li in tempList %}
+                        <p>{{ li * 229}}</p>
+                        <p>{{ li * 349}}</p>
+                    {% endfor %}
+                </div>
+                <div class="col-md-2">
+                    <p class="text-muted">입찰수량</p>
+                    {% for li in tempList %}
+                        <p>{{ li + 4}}</p>
+                        <p>{{ li }}</p>
+                    {% endfor %}
+                </div>
+                <div class="col-md-2">
+                    <p class="text-muted">예상결과</p>
+                    {% for li in tempList %}
+                        <p>낙찰</p>
+                        <p>낙찰</p>
+                    {% endfor %}
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-sm-6">마감된 옥션</div>
+                        <div class="col-sm-6 text-muted">1월6일21시</div>
+                    </div>
+                    <div class="d-flex justify-content-center" style="padding: 0 50px">
+                        <button type="button" class="btn btn-danger btn-block">자동마켓주문취소</button>
+                    </div>
+                    <br>
+                    <div style="padding: 0 50px">
+                        <ul class="nav nav-tabs" id="subList" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="list" href="#list-1" role="tab">참여규정</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="list" href="#list-2" role="tab">재입찰 및 취소규정</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane fade show active" id="list-1" role="tabpanel" aria-labelledby="list-home-list">
+                                <ul class="text-left text-muted list-sub">
+                                    <li>입찰 시, 입찰하신 가격 대비 과거 1년 수익률을 반드시 확인바랍니다.</li>
+                                    <li>옥션 바감 후 상위 입찰 가격 순 낙찰됩니다.</li>
+                                    <li>낙찰 시, 입찰하신 가격으로 낙찰받게 됩니다.</li>
+                                    <li>입찰금의 100%가 대기금으로 설정됩니다.</li>
+                                    <li>입찰을 취소하거나 미낙찰 될 경우 대기금은 해제됩니다.</li>
+                                    <li>낙찰 시, 옥션 마감 후 다음날 오전 10시에 "내 지갑"에서 대금이 자동으로 출금됩니다.</li>
+                                    <li>구매결정은 온전히 회원의 판단으로 이뤄졌으며 뮤직카우는 어떠한 경우에도 미래의 저작권료 및 저작권료 참여청구권의 판매 성사여부를 보장하거나 책임지지 않습니다.</li>
+                                </ul>
+                            </div>
+                            <div class="tab-pane fade" id="list-2" role="tabpanel" aria-labelledby="list-profile-list">
+                                <ul class="text-left text-muted list-sub">
+                                    <li>테스트 내용입니다.</li>
+                                    <li>테스트 내용입니다.</li>
+                                    <li>테스트 내용입니다.</li>
+                                    <li>테스트 내용입니다.</li>
+                                    <li>테스트 내용입니다.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
