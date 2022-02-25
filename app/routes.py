@@ -52,8 +52,9 @@ def value() :
 
     ns = db.n.find()
     techContributions = db.techContributions.find()
-    
-    return render_template('evaluation/value.html', login=login, ns=ns, techContributions=techContributions)
+    techLevels1 = list(db.techLevels.find({ 'section': '기술성'}))
+    techLevels2 = list(db.techLevels.find({ 'section': '사업성'}))
+    return render_template('evaluation/value.html', login=login, ns=ns, techContributions=techContributions, techLevels1=techLevels1, techLevels2=techLevels2)
 
 # 옥션
 @app.route('/auction')
@@ -331,6 +332,41 @@ def insert_data_id(id) :
         }
         try :
             db.techContributions.insert_one(data) # insert
+        except Exception : # if cannot read from db
+            print("** " + Exception)
+
+    elif id == "3" :
+        data1 = [
+            # { 'section': '기술성', 'item': '혁신성' },
+            { 'section': '기술성', 'item': '차별성' },
+            { 'section': '기술성', 'item': '대체가능성' },
+            { 'section': '기술성', 'item': '활용성' },
+            { 'section': '기술성', 'item': '파급성' },
+            { 'section': '기술성', 'item': '진부화가능성' },
+            { 'section': '기술성', 'item': '모방난이도' },
+            { 'section': '기술성', 'item': '권리보호강도' },
+            { 'section': '기술성', 'item': '권리안정성' },
+            { 'section': '기술성', 'item': '침해발견 및 입증 용이성' }
+            
+        ]
+        data2 = [
+            # { 'section': '사업성', 'item': '시장진입 가능성' },
+            { 'section': '사업성', 'item': '수요민감도' },
+            { 'section': '사업성', 'item': '예상 시장점유율' },
+            { 'section': '사업성', 'item': '사업화 준비기간' },
+            { 'section': '사업성', 'item': '사업화 소요자본' },
+            { 'section': '사업성', 'item': '생산용이성' },
+            { 'section': '사업성', 'item': '경제적수명' },
+            { 'section': '사업성', 'item': '매출 성장추세' },
+            { 'section': '사업성', 'item': '수익성' },
+            { 'section': '사업성', 'item': '파생적 매출' }
+            
+        ]
+        try :
+            for d in data1 :
+                db.techLevels.insert_one(d) # insert
+            for d in data2 :
+                db.techLevels.insert_one(d) # insert
         except Exception : # if cannot read from db
             print("** " + Exception)
     return redirect(url_for('insert_data'))
